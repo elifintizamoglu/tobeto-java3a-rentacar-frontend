@@ -1,8 +1,14 @@
 <app-navbar></app-navbar>
 
 <h1>{{counter}}</h1>
+<div *ngIf="counter >= 3; else counterElse"> 
+    Sayaç 3'u asti.
+</div>
 
-<button (click)="incrementCounter()"> Arttir</button>
+<ng-template #counterElse>
+    <div>Sayaç ideal seviyede.</div>
+</ng-template>
+
+<button type="button" class="btn btn-primary" (click)="incrementCounter()"> Arttir</button>
 
 <app-footer></app-footer>
-
