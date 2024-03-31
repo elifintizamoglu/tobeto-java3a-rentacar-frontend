@@ -17,7 +17,31 @@ export class AppComponent {
   title = 'JavaFS3ARentACar';
   counter: number = 0;
 
-  incrementCounter() {
+  brands = [
+    { id: 1, name: 'Audi', discontinued: false },
+    { id: 2, name: 'BMW', discontinued: false },
+    { id: 3, name: 'Chevrolet', discontinued: true },
+    { id: 4, name: 'Ford', discontinued: false },
+    { id: 5, name: 'Honda', discontinued: false },
+    { id: 6, name: 'Hyundai', discontinued: false },
+    { id: 7, name: 'Mercedes-Benz', discontinued: true },
+    { id: 8, name: 'Nissan', discontinued: false },
+    { id: 9, name: 'Toyota', discontinued: false },
+    { id: 10, name: 'Volkswagen', discontinued: false }
+  ];
+
+  onIncrementCounter() {
     ++this.counter;
+  }
+
+  pageSize = 5;
+  onLoadMoreBrands() {
+
+    this.pageSize += 5;
+
+    /*this.brands.push(
+      { id: 11, name: 'Mazda', discontinued: false },
+      { id: 11, name: 'Kia', discontinued: false });
+      */
   }
 }

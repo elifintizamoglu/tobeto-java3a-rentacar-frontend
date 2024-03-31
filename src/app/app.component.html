@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <h1>{{counter}}</h1>
-<div *ngIf="counter >= 3; else counterElse"> 
+<div *ngIf="counter >= 3; else counterElse">
     Sayaç 3'u asti.
 </div>
 
@@ -9,6 +9,14 @@
     <div>Sayaç ideal seviyede.</div>
 </ng-template>
 
-<button type="button" class="btn btn-primary" (click)="incrementCounter()"> Arttir</button>
+<button type="button" class="btn btn-primary" (click)="onIncrementCounter()"> Arttir</button>
+
+<ul>
+    <li *ngFor="let brand of brands.slice(0, pageSize)" [ngClass]="{'text-secondary':brand.discontinued}">
+        {{brand.name}}
+    </li>
+</ul>
+
+<button type="button" class="btn btn-primary" (click)="onLoadMoreBrands()">Load More</button>
 
 <app-footer></app-footer>
