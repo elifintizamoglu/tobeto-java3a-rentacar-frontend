@@ -1,0 +1,10 @@
+{
+    "angular-schematics.schematicsDefaultOptions": {
+        "angular-component": {
+            "skipChangeDetectionOnPush": false
+        },
+        "angular-*": {
+            "style": "scss"
+        }
+    }
+}

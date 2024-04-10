@@ -5,11 +5,14 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <p>
-      footer works!
-    </p>
-  `,
-  styles: ``
+  <footer class="bg-dark text-light p-3">
+    <div class="container">footer works!</div>
+  </footer>`,
+  styles: `
+  footer{
+    height: 4rem;
+  }
+  `
 })
 export class FooterComponent {
 
