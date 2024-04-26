@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ButtonComponent } from '../button/button.component';
 
 /*
 export interface NavItemInterface {
@@ -15,12 +16,18 @@ export type NavItem = {
   link: string;
 };
 
+export type NavTitle = {
+  text: string;
+  routerLink?: string | string[];
+} | undefined; // NavTitle type'ı bu obje ya da undefined olabilir demek
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [
     CommonModule, //ngFor
-    RouterModule
+    RouterModule,
+    ButtonComponent
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
@@ -29,6 +36,8 @@ export type NavItem = {
 export class NavbarComponent {
 
   @Input() navItems: NavItem[] = [];
+  @Input() title: NavTitle;
+  @Input() endContentTemplate?: TemplateRef<any>;
 
   isUrl(url: string): boolean {
     return url.startsWith('http') || url.startsWith('https');
