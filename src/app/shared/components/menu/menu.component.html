@@ -1,0 +1,8 @@
+<div class="list-group">
+  <button *ngFor="let item of items; index as i" type="button" [routerLink]="item.routeLink" routerLinkActive="active"
+    (click)="onItemClick($event, item, i)" class="list-group-item list-group-item-action" [ngClass]="{
+      active: selectedItemIndex === i
+    }">
+    {{ item.label }}
+  </button>
+</div>
