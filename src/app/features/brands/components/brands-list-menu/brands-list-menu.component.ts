@@ -1,14 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+} from '@angular/core';
 import {
   MenuComponent,
   MenuItem,
 } from '../../../../shared/components/menu/menu.component';
-
-type Brand = {
-  id: number;
-  name: string;
-};
+import { BrandListItemDto } from '../../models/brand-list-item-dto';
+import { BrandsService } from '../../services/brands.service';
 
 @Component({
   selector: 'app-brands-list-menu',
@@ -18,28 +21,36 @@ type Brand = {
   styleUrl: './brands-list-menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BrandsListMenuComponent {
-  brands: Brand[] = [
-    // Mock data
-    { id: 1, name: 'Toyota' },
-    { id: 2, name: 'Ford' },
-    { id: 3, name: 'Chevrolet' },
-    { id: 4, name: 'Nissan' },
-    { id: 5, name: 'Honda' },
-    { id: 6, name: 'Jeep' },
-    { id: 7, name: 'Hyundai' },
-    { id: 8, name: 'Dodge' },
-    { id: 9, name: 'Kia' },
-    { id: 10, name: 'GMC' },
-  ];
+export class BrandsListMenuComponent implements OnInit {
+  @Output() selectBrand = new EventEmitter<BrandListItemDto | null>();
+
+  brands!: BrandListItemDto[];
+  selectedBrand: BrandListItemDto | null = null;
+
+  // brandsService: BrandsService;
+  constructor(private brandsService: BrandsService) {
+    // this.brandsService = brandsService;
+  }
+
+  // ngOnInit component ilk yerleştiğinde bir kez çalışır.
+  ngOnInit(): void {
+    this.getBrandsList();
+  }
+
+  getBrandsList() {
+    this.brands = this.brandsService.getBrands();
+  }
+
+  onSelectBrand(brand: BrandListItemDto) {
+    this.selectedBrand = this.selectedBrand?.id !== brand.id ? brand : null;
+    this.selectBrand.emit(this.selectedBrand);
+  }
 
   get brandsMenuItems(): MenuItem[] {
     return this.brands.map((brand) => {
       return {
         label: brand.name,
-        click: (_: MouseEvent) => {
-          console.log('Brand selected:', brand.name);
-        }
+        click: (_: MouseEvent) => this.onSelectBrand(brand),
       };
     });
   }

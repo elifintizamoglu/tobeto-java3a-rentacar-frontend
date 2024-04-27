@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HomeLayoutComponent } from '../../shared/layouts/home-layout/home-layout.component';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { BrandsListMenuComponent } from '../../features/brands/components/brands-list-menu/brands-list-menu.component';
+import { BrandListItemDto } from '../../features/brands/models/brand-list-item-dto';
 
 @Component({
   selector: 'app-home-page',
@@ -11,10 +12,16 @@ import { BrandsListMenuComponent } from '../../features/brands/components/brands
     CommonModule,
     HomeLayoutComponent,
     ButtonComponent,
-    BrandsListMenuComponent
+    BrandsListMenuComponent,
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePageComponent { }
+export class HomePageComponent {
+  selectedBrand: BrandListItemDto | null = null;
+
+  onSelectBrand(seletedBrand: BrandListItemDto | null) {
+    this.selectedBrand = seletedBrand;
+  }
+}
