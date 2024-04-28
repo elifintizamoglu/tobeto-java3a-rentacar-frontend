@@ -9,13 +9,14 @@
     <div class="row">
       <div class="col-2">
         <app-brands-list-menu
+        [initialSelectedBrandId]="selectedBrandId"
           (selectBrand)="onSelectBrand($event)"
         ></app-brands-list-menu>
       </div>
       <div class="col-8">
         app-models-card-list
         <!-- Angular Template Pipe: template tarafında veriyi terkar elden geçirip yeni veri oluşturmızı sağlar. -->
-        {{ selectedBrand | json }}
+        {{ selectedBrandId }}
         <!-- <app-models-card-list [brandId]="selectedBrand?.id"></app-models-card-list> -->
       </div>
     </div>

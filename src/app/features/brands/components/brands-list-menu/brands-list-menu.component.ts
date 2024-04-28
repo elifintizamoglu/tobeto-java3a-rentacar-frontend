@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  Input,
   OnInit,
   Output,
 } from '@angular/core';
@@ -22,10 +23,12 @@ import { BrandsService } from '../../services/brands.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrandsListMenuComponent implements OnInit {
+  @Input() initialSelectedBrandId: number | null = null;
   @Output() selectBrand = new EventEmitter<BrandListItemDto | null>();
 
   brands!: BrandListItemDto[];
   selectedBrand: BrandListItemDto | null = null;
+  initialSelectedBrandIndex: number | null = null;
 
   // brandsService: BrandsService;
   constructor(private brandsService: BrandsService) {
@@ -39,6 +42,10 @@ export class BrandsListMenuComponent implements OnInit {
 
   getBrandsList() {
     this.brands = this.brandsService.getBrands();
+    if (this.initialSelectedBrandId) { // selectedBrandId var ise atamasını gerçekleştirir
+      this.selectedBrand = this.brands.find(brand => brand.id === this.initialSelectedBrandId) ?? null;
+      this.initialSelectedBrandIndex = this.brands.findIndex((brand) => brand.id === this.initialSelectedBrandId);
+    }
   }
 
   onSelectBrand(brand: BrandListItemDto) {
