@@ -18,6 +18,8 @@ export class HomeLayoutComponent {
     { label: 'Home', link: '/' },
     { label: 'About', link: '/about' },
     { label: 'Contact', link: '/contact' },
+    { label: 'Management', link: '/management' },
+    { label: 'Brands Management', link: '/management/brands' },
   ];
 
 }

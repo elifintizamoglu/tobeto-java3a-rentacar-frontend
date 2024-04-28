@@ -4,7 +4,8 @@
             "skipChangeDetectionOnPush": false
         },
         "angular-*": {
-            "style": "scss"
+            "style": "scss",
+            "externalTemplate": true
         }
     }
 }
