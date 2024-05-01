@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -23,6 +24,7 @@ import { BrandsService } from '../../services/brands.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrandsListMenuComponent implements OnInit {
+
   @Input() initialSelectedBrandId: number | null = null;
   @Output() selectBrand = new EventEmitter<BrandListItemDto | null>();
 
@@ -31,7 +33,7 @@ export class BrandsListMenuComponent implements OnInit {
   initialSelectedBrandIndex: number | null = null;
 
   // brandsService: BrandsService;
-  constructor(private brandsService: BrandsService) {
+  constructor(private brandsService: BrandsService, private change:ChangeDetectorRef) {
     // this.brandsService = brandsService;
   }
 
@@ -41,11 +43,16 @@ export class BrandsListMenuComponent implements OnInit {
   }
 
   getBrandsList() {
-    this.brands = this.brandsService.getBrands();
-    if (this.initialSelectedBrandId) { // selectedBrandId var ise atamasını gerçekleştirir
-      this.selectedBrand = this.brands.find(brand => brand.id === this.initialSelectedBrandId) ?? null;
-      this.initialSelectedBrandIndex = this.brands.findIndex((brand) => brand.id === this.initialSelectedBrandId);
-    }
+    // subscribe olduk, subscribe olduğu anda çalışır
+    this.brandsService.getBrands().subscribe((response) => {
+      this.brands = response;
+      //this.setSelectedBrand();
+      if (this.initialSelectedBrandId) { // selectedBrandId var ise atamasını gerçekleştirir
+        this.selectedBrand = this.brands.find(brand => brand.id === this.initialSelectedBrandId) ?? null;
+        this.initialSelectedBrandIndex = this.brands.findIndex((brand) => brand.id === this.initialSelectedBrandId);
+      }
+      this.change.markForCheck(); // değişip değişmediğini kontrol et
+    });
   }
 
   onSelectBrand(brand: BrandListItemDto) {
@@ -54,7 +61,7 @@ export class BrandsListMenuComponent implements OnInit {
   }
 
   get brandsMenuItems(): MenuItem[] {
-    return this.brands.map((brand) => {
+    return this.brands?.map((brand) => {
       return {
         label: brand.name,
         click: (_: MouseEvent) => this.onSelectBrand(brand),
