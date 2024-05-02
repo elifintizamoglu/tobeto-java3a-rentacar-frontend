@@ -5,6 +5,7 @@ import { ButtonComponent } from '../../shared/components/button/button.component
 import { BrandsListMenuComponent } from '../../features/brands/components/brands-list-menu/brands-list-menu.component';
 import { BrandListItemDto } from '../../features/brands/models/brand-list-item-dto';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GetAllBrandResponse } from '../../shared/services/api';
 
 @Component({
   selector: 'app-home-page',
@@ -39,7 +40,7 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  onSelectBrand(seletedBrand: BrandListItemDto | null) {
+  onSelectBrand(seletedBrand: GetAllBrandResponse | null) {
     this.selectedBrandId = seletedBrand?.id ?? null; //sol taraf boş bir değerse sağdaki değeri geç
 
     if (this.selectedBrandId !== null)  // selected brand varsa route değiştirmek istemiyoruz / selectedBrandId null değilse if'in içine gir

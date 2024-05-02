@@ -1,0 +1,16 @@
+export * from './brands-controller.service';
+import { BrandsControllerService } from './brands-controller.service';
+export * from './brands-controller.serviceInterface';
+export * from './cars-controller.service';
+import { CarsControllerService } from './cars-controller.service';
+export * from './cars-controller.serviceInterface';
+export * from './fuels-controller.service';
+import { FuelsControllerService } from './fuels-controller.service';
+export * from './fuels-controller.serviceInterface';
+export * from './models-controller.service';
+import { ModelsControllerService } from './models-controller.service';
+export * from './models-controller.serviceInterface';
+export * from './transmissions-controller.service';
+import { TransmissionsControllerService } from './transmissions-controller.service';
+export * from './transmissions-controller.serviceInterface';
+export const APIS = [BrandsControllerService, CarsControllerService, FuelsControllerService, ModelsControllerService, TransmissionsControllerService];

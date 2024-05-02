@@ -6,8 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
+    "test": "ng test",
+    "generate:apiservices" : "openapi-generator-cli generate -i http://localhost:8080/v3/api-docs -g typescript-angular -o src/app/shared/services/api --additional-properties fileNaming=kebab-case,modelPropertyNaming=camelCase,withInterfaces=true,useSingleRequestParameter=true"  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^17.3.0",
@@ -27,6 +27,7 @@
     "@angular-devkit/build-angular": "^17.3.0",
     "@angular/cli": "^17.3.0",
     "@angular/compiler-cli": "^17.3.0",
+    "@openapitools/openapi-generator-cli": "^2.13.4",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
