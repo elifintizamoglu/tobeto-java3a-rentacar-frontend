@@ -74,6 +74,6 @@ export class BrandsListMenuComponent implements OnInit {
         label: brand.name!, // ! işareti null olmayan bir değer olduğunu belirtir
         click: (_: MouseEvent) => this.onSelectBrand(brand),
       };
-    });
+    }) ?? [];
   }
 }

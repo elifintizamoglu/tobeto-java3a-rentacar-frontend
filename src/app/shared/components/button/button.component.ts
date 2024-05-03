@@ -14,6 +14,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 export class ButtonComponent {
 
   // State
+
+  @Input() type: 'button' | 'submit' | 'reset' = 'button';
   @Input() variant: ButtonVariant = 'primary';
   @Output() click = new EventEmitter<MouseEvent>();
 
