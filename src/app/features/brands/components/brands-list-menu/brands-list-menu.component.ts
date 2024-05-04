@@ -49,9 +49,13 @@ export class BrandsListMenuComponent implements OnInit {
 
   getBrandsList() {
     // subscribe olduk, subscribe olduğu anda çalışır
-    this.brandsService.getAll4().subscribe((response) => {
-      this.brands = response;
-      console.log("bbb" + JSON.stringify(this.brands));
+    this.brandsService.getAll4().subscribe(async (response) => {
+      if (response instanceof Blob) {
+        const text = await response.text();
+        this.brands = JSON.parse(text);
+      } else {
+        this.brands = response;
+      }
 
       //this.setSelectedBrand();
       if (this.initialSelectedBrandId) { // selectedBrandId var ise atamasını gerçekleştirir
@@ -68,7 +72,7 @@ export class BrandsListMenuComponent implements OnInit {
   }
 
   get brandsMenuItems(): MenuItem[] {
-    console.log("aaa" + JSON.stringify(this.brands));
+
     return this.brands?.map((brand) => {
       return {
         label: brand.name!, // ! işareti null olmayan bir değer olduğunu belirtir
