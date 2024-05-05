@@ -23,9 +23,9 @@ import { CreateFuelRequest } from '../model/create-fuel-request';
 // @ts-ignore
 import { CreatedFuelResponse } from '../model/created-fuel-response';
 // @ts-ignore
-import { GetAll400Response } from '../model/get-all400-response';
-// @ts-ignore
 import { GetAllFuelResponse } from '../model/get-all-fuel-response';
+// @ts-ignore
+import { UpdateBrand400Response } from '../model/update-brand400-response';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';

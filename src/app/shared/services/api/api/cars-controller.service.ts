@@ -23,9 +23,9 @@ import { CreateCarRequest } from '../model/create-car-request';
 // @ts-ignore
 import { CreatedCarResponse } from '../model/created-car-response';
 // @ts-ignore
-import { GetAll400Response } from '../model/get-all400-response';
-// @ts-ignore
 import { GetAllCarResponse } from '../model/get-all-car-response';
+// @ts-ignore
+import { UpdateBrand400Response } from '../model/update-brand400-response';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';

@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { Add4RequestParams, BrandsControllerService } from '../../../../shared/services/api';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-brand-form',
@@ -26,7 +27,8 @@ export class AddBrandFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private brandsService: BrandsControllerService,
-    private change: ChangeDetectorRef) { }
+    private change: ChangeDetectorRef,
+    private router: Router) { }
 
   ngOnInit(): void { // component ilk yüklendiğinde form oluşturulacak
     this.createForm();
@@ -69,6 +71,9 @@ export class AddBrandFormComponent implements OnInit {
         this.formMessage = 'Brand added successfully';
         this.form.reset();
         this.change.markForCheck();
+        setTimeout(() => {
+          this.router.navigate(['/management/brands']);
+        }, 2000);
       },
     });
   }

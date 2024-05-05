@@ -15,8 +15,11 @@ import { Observable }                                        from 'rxjs';
 
 import { CreateBrandRequest } from '../model/models';
 import { CreatedBrandResponse } from '../model/models';
-import { GetAll400Response } from '../model/models';
 import { GetAllBrandResponse } from '../model/models';
+import { GetBrandByIdResponse } from '../model/models';
+import { UpdateBrand400Response } from '../model/models';
+import { UpdateBrandRequest } from '../model/models';
+import { UpdateBrandResponse } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
@@ -28,6 +31,15 @@ export interface Add4RequestParams {
 
 export interface DeleteBrandByIdRequestParams {
     id: number;
+}
+
+export interface GetBrandByIdRequestParams {
+    id: number;
+}
+
+export interface UpdateBrandRequestParams {
+    id: number;
+    updateBrandRequest: UpdateBrandRequest;
 }
 
 
@@ -54,5 +66,19 @@ export interface BrandsControllerServiceInterface {
      * 
 */
     getAll4(extraHttpRequestParams?: any): Observable<Array<GetAllBrandResponse>>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    getBrandById(requestParameters: GetBrandByIdRequestParams, extraHttpRequestParams?: any): Observable<GetBrandByIdResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    updateBrand(requestParameters: UpdateBrandRequestParams, extraHttpRequestParams?: any): Observable<UpdateBrandResponse>;
 
 }

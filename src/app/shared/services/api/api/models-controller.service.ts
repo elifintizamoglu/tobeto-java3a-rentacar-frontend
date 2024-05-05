@@ -23,9 +23,9 @@ import { CreateModelRequest } from '../model/create-model-request';
 // @ts-ignore
 import { CreatedModelResponse } from '../model/created-model-response';
 // @ts-ignore
-import { GetAll400Response } from '../model/get-all400-response';
-// @ts-ignore
 import { GetAllModelResponse } from '../model/get-all-model-response';
+// @ts-ignore
+import { UpdateBrand400Response } from '../model/update-brand400-response';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';

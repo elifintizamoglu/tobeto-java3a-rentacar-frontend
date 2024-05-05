@@ -15,8 +15,8 @@ import { Observable }                                        from 'rxjs';
 
 import { CreateModelRequest } from '../model/models';
 import { CreatedModelResponse } from '../model/models';
-import { GetAll400Response } from '../model/models';
 import { GetAllModelResponse } from '../model/models';
+import { UpdateBrand400Response } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';

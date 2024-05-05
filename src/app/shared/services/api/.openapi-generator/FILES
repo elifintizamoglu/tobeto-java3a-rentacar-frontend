@@ -32,8 +32,11 @@ model/get-all-car-response.ts
 model/get-all-fuel-response.ts
 model/get-all-model-response.ts
 model/get-all-transmission-response.ts
-model/get-all400-response.ts
+model/get-brand-by-id-response.ts
 model/models.ts
+model/update-brand-request.ts
+model/update-brand-response.ts
+model/update-brand400-response.ts
 model/validation-problem-details.ts
 param.ts
 variables.ts
