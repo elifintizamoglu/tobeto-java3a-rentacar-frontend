@@ -33,10 +33,13 @@ model/get-all-fuel-response.ts
 model/get-all-model-response.ts
 model/get-all-transmission-response.ts
 model/get-brand-by-id-response.ts
+model/get-model-by-id-response.ts
 model/models.ts
 model/update-brand-request.ts
 model/update-brand-response.ts
-model/update-brand400-response.ts
+model/update-model-request.ts
+model/update-model-response.ts
+model/update-model400-response.ts
 model/validation-problem-details.ts
 param.ts
 variables.ts

@@ -16,13 +16,13 @@ import { Observable }                                        from 'rxjs';
 import { CreateCarRequest } from '../model/models';
 import { CreatedCarResponse } from '../model/models';
 import { GetAllCarResponse } from '../model/models';
-import { UpdateBrand400Response } from '../model/models';
+import { UpdateModel400Response } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
 
 
-export interface Add3RequestParams {
+export interface Add2RequestParams {
     createCarRequest: CreateCarRequest;
 }
 
@@ -36,12 +36,12 @@ export interface CarsControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    add3(requestParameters: Add3RequestParams, extraHttpRequestParams?: any): Observable<CreatedCarResponse>;
+    add2(requestParameters: Add2RequestParams, extraHttpRequestParams?: any): Observable<CreatedCarResponse>;
 
     /**
      * 
      * 
 */
-    getAll3(extraHttpRequestParams?: any): Observable<Array<GetAllCarResponse>>;
+    getAll2(extraHttpRequestParams?: any): Observable<Array<GetAllCarResponse>>;
 
 }

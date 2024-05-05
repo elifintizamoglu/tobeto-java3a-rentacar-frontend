@@ -17,15 +17,15 @@ import { CreateBrandRequest } from '../model/models';
 import { CreatedBrandResponse } from '../model/models';
 import { GetAllBrandResponse } from '../model/models';
 import { GetBrandByIdResponse } from '../model/models';
-import { UpdateBrand400Response } from '../model/models';
 import { UpdateBrandRequest } from '../model/models';
 import { UpdateBrandResponse } from '../model/models';
+import { UpdateModel400Response } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
 
 
-export interface Add4RequestParams {
+export interface AddBrandRequestParams {
     createBrandRequest: CreateBrandRequest;
 }
 
@@ -52,7 +52,7 @@ export interface BrandsControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    add4(requestParameters: Add4RequestParams, extraHttpRequestParams?: any): Observable<CreatedBrandResponse>;
+    addBrand(requestParameters: AddBrandRequestParams, extraHttpRequestParams?: any): Observable<CreatedBrandResponse>;
 
     /**
      * 
@@ -65,7 +65,7 @@ export interface BrandsControllerServiceInterface {
      * 
      * 
 */
-    getAll4(extraHttpRequestParams?: any): Observable<Array<GetAllBrandResponse>>;
+    getAllBrands(extraHttpRequestParams?: any): Observable<Array<GetAllBrandResponse>>;
 
     /**
      * 

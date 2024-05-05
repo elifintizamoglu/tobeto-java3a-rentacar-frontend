@@ -6,6 +6,7 @@ import { BrandsListMenuComponent } from '../../features/brands/components/brands
 import { BrandListItemDto } from '../../features/brands/models/brand-list-item-dto';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetAllBrandResponse } from '../../shared/services/api';
+import { ModelsCardListComponent } from '../../features/models/components/models-card-list/models-card-list.component';
 
 @Component({
   selector: 'app-home-page',
@@ -15,6 +16,7 @@ import { GetAllBrandResponse } from '../../shared/services/api';
     HomeLayoutComponent,
     ButtonComponent,
     BrandsListMenuComponent,
+    ModelsCardListComponent,
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',

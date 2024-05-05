@@ -11,7 +11,7 @@
  */
 
 
-export interface GetAllModelResponse { 
+export interface UpdateModelResponse { 
     id?: number;
     name?: string;
     brandId?: number;

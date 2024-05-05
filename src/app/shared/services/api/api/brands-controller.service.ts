@@ -27,18 +27,18 @@ import { GetAllBrandResponse } from '../model/get-all-brand-response';
 // @ts-ignore
 import { GetBrandByIdResponse } from '../model/get-brand-by-id-response';
 // @ts-ignore
-import { UpdateBrand400Response } from '../model/update-brand400-response';
-// @ts-ignore
 import { UpdateBrandRequest } from '../model/update-brand-request';
 // @ts-ignore
 import { UpdateBrandResponse } from '../model/update-brand-response';
+// @ts-ignore
+import { UpdateModel400Response } from '../model/update-model400-response';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 import {
     BrandsControllerServiceInterface,
-    Add4RequestParams,
+    AddBrandRequestParams,
     DeleteBrandByIdRequestParams,
     GetBrandByIdRequestParams,
     UpdateBrandRequestParams
@@ -115,13 +115,13 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public add4(requestParameters: Add4RequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<CreatedBrandResponse>;
-    public add4(requestParameters: Add4RequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CreatedBrandResponse>>;
-    public add4(requestParameters: Add4RequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CreatedBrandResponse>>;
-    public add4(requestParameters: Add4RequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public addBrand(requestParameters: AddBrandRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<CreatedBrandResponse>;
+    public addBrand(requestParameters: AddBrandRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CreatedBrandResponse>>;
+    public addBrand(requestParameters: AddBrandRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CreatedBrandResponse>>;
+    public addBrand(requestParameters: AddBrandRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         const createBrandRequest = requestParameters.createBrandRequest;
         if (createBrandRequest === null || createBrandRequest === undefined) {
-            throw new Error('Required parameter createBrandRequest was null or undefined when calling add4.');
+            throw new Error('Required parameter createBrandRequest was null or undefined when calling addBrand.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -252,10 +252,10 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAll4(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<Array<GetAllBrandResponse>>;
-    public getAll4(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<GetAllBrandResponse>>>;
-    public getAll4(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<GetAllBrandResponse>>>;
-    public getAll4(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public getAllBrands(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<Array<GetAllBrandResponse>>;
+    public getAllBrands(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<GetAllBrandResponse>>>;
+    public getAllBrands(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<GetAllBrandResponse>>>;
+    public getAllBrands(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 

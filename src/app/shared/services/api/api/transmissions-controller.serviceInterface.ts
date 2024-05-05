@@ -16,7 +16,7 @@ import { Observable }                                        from 'rxjs';
 import { CreateTransmissionRequest } from '../model/models';
 import { CreatedTransmissionResponse } from '../model/models';
 import { GetAllTransmissionResponse } from '../model/models';
-import { UpdateBrand400Response } from '../model/models';
+import { UpdateModel400Response } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';

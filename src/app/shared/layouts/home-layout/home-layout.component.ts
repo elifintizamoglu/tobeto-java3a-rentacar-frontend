@@ -20,6 +20,7 @@ export class HomeLayoutComponent {
     { label: 'Contact', link: '/contact' },
     { label: 'Management', link: '/management' },
     { label: 'Brands Management', link: '/management/brands' },
+    { label: 'Models Management', link: '/management/models' },
   ];
 
 }

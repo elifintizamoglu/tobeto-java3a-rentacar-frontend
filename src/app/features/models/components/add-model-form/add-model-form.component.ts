@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
-import { AddBrandRequestParams, BrandsControllerService } from '../../../../shared/services/api';
-import { Route, Router } from '@angular/router';
+import { AddModelRequestParams, ModelsControllerService } from '../../../../shared/services/api';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-brand-form',
+  selector: 'app-add-model-form',
   standalone: true,
   imports: [
     CommonModule,
@@ -15,18 +15,18 @@ import { Route, Router } from '@angular/router';
     ReactiveFormsModule,
     ButtonComponent,
   ],
-  templateUrl: './add-brand-form.component.html',
-  styleUrl: './add-brand-form.component.scss',
+  templateUrl: './add-model-form.component.html',
+  styleUrl: './add-model-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddBrandFormComponent implements OnInit {
+export class AddModelFormComponent implements OnInit {
 
   //nameInput: string = '';
   form!: FormGroup; // ! -> şu an bir değer atamayacağım sonra atayacağım
   formMessage: string | null = null;
 
   constructor(private formBuilder: FormBuilder,
-    private brandsService: BrandsControllerService,
+    private modelsService: ModelsControllerService,
     private change: ChangeDetectorRef,
     private router: Router) { }
 
@@ -37,6 +37,9 @@ export class AddBrandFormComponent implements OnInit {
   createForm() {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
+      brandId: ['', [Validators.required]],
+      fuelId: ['', [Validators.required]],
+      transmissionId: ['', [Validators.required]],
     });
   }
 
@@ -50,12 +53,15 @@ export class AddBrandFormComponent implements OnInit {
 
   add() {
 
-    const request: AddBrandRequestParams = {
-      createBrandRequest: {
+    const request: AddModelRequestParams = {
+      createModelRequest: {
         name: this.form.value.name,
+        brandId: this.form.value.brandId,
+        fuelId: this.form.value.fuelId,
+        transmissionId: this.form.value.transmissionId
       }
     }
-    this.brandsService.addBrand(request).subscribe({
+    this.modelsService.addModel(request).subscribe({
       next: (response) => {
         // Next: Observable'dan gelen veri yakaladığımız fonksiyon
         console.log("a");
@@ -68,11 +74,11 @@ export class AddBrandFormComponent implements OnInit {
       },
       complete: () => {
         // Complete: Observable'dan gelen veri akışının tamamlandığını bildiren fonksiyon. Complete çalıştığı taktirde observable'dan gelen veri akışı sona erer.
-        this.formMessage = 'Brand added successfully';
+        this.formMessage = 'Model added successfully';
         this.form.reset();
         this.change.markForCheck();
         setTimeout(() => {
-          this.router.navigate(['/management/brands']);
+          this.router.navigate(['/management/models']);
         }, 2000);
       },
     });

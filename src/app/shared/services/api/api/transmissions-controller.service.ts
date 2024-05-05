@@ -25,7 +25,7 @@ import { CreatedTransmissionResponse } from '../model/created-transmission-respo
 // @ts-ignore
 import { GetAllTransmissionResponse } from '../model/get-all-transmission-response';
 // @ts-ignore
-import { UpdateBrand400Response } from '../model/update-brand400-response';
+import { UpdateModel400Response } from '../model/update-model400-response';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';

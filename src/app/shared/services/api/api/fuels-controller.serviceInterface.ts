@@ -16,13 +16,13 @@ import { Observable }                                        from 'rxjs';
 import { CreateFuelRequest } from '../model/models';
 import { CreatedFuelResponse } from '../model/models';
 import { GetAllFuelResponse } from '../model/models';
-import { UpdateBrand400Response } from '../model/models';
+import { UpdateModel400Response } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
 
 
-export interface Add2RequestParams {
+export interface Add1RequestParams {
     createFuelRequest: CreateFuelRequest;
 }
 
@@ -36,12 +36,12 @@ export interface FuelsControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    add2(requestParameters: Add2RequestParams, extraHttpRequestParams?: any): Observable<CreatedFuelResponse>;
+    add1(requestParameters: Add1RequestParams, extraHttpRequestParams?: any): Observable<CreatedFuelResponse>;
 
     /**
      * 
      * 
 */
-    getAll2(extraHttpRequestParams?: any): Observable<Array<GetAllFuelResponse>>;
+    getAll1(extraHttpRequestParams?: any): Observable<Array<GetAllFuelResponse>>;
 
 }

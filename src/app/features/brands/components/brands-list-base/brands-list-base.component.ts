@@ -28,7 +28,7 @@ export class BrandsListBaseComponent {
 
   getBrandsList() {
     // subscribe olduk, subscribe olduğu anda çalışır
-    this.brandsService.getAll4().subscribe(async (response) => {
+    this.brandsService.getAllBrands().subscribe(async (response) => {
       if (response instanceof Blob) {
         const text = await response.text();
         this.brands = JSON.parse(text);
