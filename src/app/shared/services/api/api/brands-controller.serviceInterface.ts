@@ -26,6 +26,10 @@ export interface Add4RequestParams {
     createBrandRequest: CreateBrandRequest;
 }
 
+export interface DeleteBrandByIdRequestParams {
+    id: number;
+}
+
 
 export interface BrandsControllerServiceInterface {
     defaultHeaders: HttpHeaders;
@@ -37,6 +41,13 @@ export interface BrandsControllerServiceInterface {
 * @param requestParameters
      */
     add4(requestParameters: Add4RequestParams, extraHttpRequestParams?: any): Observable<CreatedBrandResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, extraHttpRequestParams?: any): Observable<{}>;
 
     /**
      * 

@@ -15,8 +15,11 @@ export class BrandsListBaseComponent {
   brands!: GetAllBrandResponse[];
   selectedBrand: GetAllBrandResponse | null = null;
   initialSelectedBrandIndex: number | null = null;
+  brandsService: BrandsControllerService;
 
-  constructor(private brandsService: BrandsControllerService, private change: ChangeDetectorRef) { }
+  constructor(brandsService: BrandsControllerService, private change: ChangeDetectorRef) {
+    this.brandsService = brandsService;
+   }
 
   // ngOnInit component ilk yerleştiğinde bir kez çalışır.
   ngOnInit(): void {
