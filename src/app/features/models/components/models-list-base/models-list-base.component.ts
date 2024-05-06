@@ -18,7 +18,7 @@ export class ModelsListBaseComponent {
 
   constructor(
     private modelsService: ModelsControllerService,
-    private change: ChangeDetectorRef) { }
+    protected change: ChangeDetectorRef) { }
 
   // ngOnInit component ilk yerleştiğinde bir kez çalışır.
   ngOnInit(): void {

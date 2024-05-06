@@ -1,1 +1,7 @@
-<p>models-card-list works!</p>,
+@for (model of filteredModels; track $index) {
+    <app-card
+      [title]="model.name!"
+      [text]="getModelCardText(model)"
+      buttonLabel="Rent"
+    ></app-card>
+    }
