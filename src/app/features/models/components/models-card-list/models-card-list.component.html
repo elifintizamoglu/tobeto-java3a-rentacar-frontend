@@ -1,7 +1,11 @@
-@for (model of filteredModels; track $index) {
+<div class="row">
+  @for (model of filteredModels; track $index) {
     <app-card
       [title]="model.name!"
       [text]="getModelCardText(model)"
       buttonLabel="Rent"
+      class="col-12 col-md-5 p-3"
     ></app-card>
     }
+
+</div>
