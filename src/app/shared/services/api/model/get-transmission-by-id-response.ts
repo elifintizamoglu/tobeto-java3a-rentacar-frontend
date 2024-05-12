@@ -11,14 +11,8 @@
  */
 
 
-export interface GetAllModelResponse { 
+export interface GetTransmissionByIdResponse { 
     id?: number;
     name?: string;
-    brandId?: number;
-    brandName?: string;
-    fuelId?: number;
-    fuelName?: string;
-    transmissionId?: number;
-    transmissionName?: string;
 }
 

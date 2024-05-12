@@ -19,19 +19,19 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { CreateBrandRequest } from '../model/create-brand-request';
+import { CreateRentalRequest } from '../model/create-rental-request';
 // @ts-ignore
-import { CreateBrandResponse } from '../model/create-brand-response';
+import { CreateRentalResponse } from '../model/create-rental-response';
 // @ts-ignore
-import { GetAllBrandResponse } from '../model/get-all-brand-response';
+import { GetAllRentalResponse } from '../model/get-all-rental-response';
 // @ts-ignore
-import { GetBrandByIdResponse } from '../model/get-brand-by-id-response';
+import { GetRentalByIdResponse } from '../model/get-rental-by-id-response';
 // @ts-ignore
 import { ResourceNotFoundDetails } from '../model/resource-not-found-details';
 // @ts-ignore
-import { UpdateBrandRequest } from '../model/update-brand-request';
+import { UpdateRentalRequest } from '../model/update-rental-request';
 // @ts-ignore
-import { UpdateBrandResponse } from '../model/update-brand-response';
+import { UpdateRentalResponse } from '../model/update-rental-response';
 // @ts-ignore
 import { UpdateUserById400Response } from '../model/update-user-by-id400-response';
 
@@ -39,19 +39,19 @@ import { UpdateUserById400Response } from '../model/update-user-by-id400-respons
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 import {
-    BrandsControllerServiceInterface,
-    AddBrandRequestParams,
-    DeleteBrandByIdRequestParams,
-    GetBrandByIdRequestParams,
-    UpdateBrandByIdRequestParams
-} from './brands-controller.serviceInterface';
+    RentalsControllerServiceInterface,
+    AddRentalRequestParams,
+    DeleteRentalByIdRequestParams,
+    GetRentalByIdRequestParams,
+    UpdateRentalByIdRequestParams
+} from './rentals-controller.serviceInterface';
 
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class BrandsControllerService implements BrandsControllerServiceInterface {
+export class RentalsControllerService implements RentalsControllerServiceInterface {
 
     protected basePath = 'http://localhost:8080';
     public defaultHeaders = new HttpHeaders();
@@ -117,13 +117,13 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addBrand(requestParameters: AddBrandRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<CreateBrandResponse>;
-    public addBrand(requestParameters: AddBrandRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CreateBrandResponse>>;
-    public addBrand(requestParameters: AddBrandRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CreateBrandResponse>>;
-    public addBrand(requestParameters: AddBrandRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        const createBrandRequest = requestParameters.createBrandRequest;
-        if (createBrandRequest === null || createBrandRequest === undefined) {
-            throw new Error('Required parameter createBrandRequest was null or undefined when calling addBrand.');
+    public addRental(requestParameters: AddRentalRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<CreateRentalResponse>;
+    public addRental(requestParameters: AddRentalRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CreateRentalResponse>>;
+    public addRental(requestParameters: AddRentalRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CreateRentalResponse>>;
+    public addRental(requestParameters: AddRentalRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        const createRentalRequest = requestParameters.createRentalRequest;
+        if (createRentalRequest === null || createRentalRequest === undefined) {
+            throw new Error('Required parameter createRentalRequest was null or undefined when calling addRental.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -171,11 +171,11 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
             }
         }
 
-        let localVarPath = `/api/v1/brands`;
-        return this.httpClient.request<CreateBrandResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/api/v1/rentals`;
+        return this.httpClient.request<CreateRentalResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: createBrandRequest,
+                body: createRentalRequest,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
@@ -191,13 +191,13 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public deleteRentalById(requestParameters: DeleteRentalByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public deleteRentalById(requestParameters: DeleteRentalByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public deleteRentalById(requestParameters: DeleteRentalByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public deleteRentalById(requestParameters: DeleteRentalByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         const id = requestParameters.id;
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteBrandById.');
+            throw new Error('Required parameter id was null or undefined when calling deleteRentalById.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -236,7 +236,7 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
             }
         }
 
-        let localVarPath = `/api/v1/brands/delete/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
+        let localVarPath = `/api/v1/rentals/delete/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
         return this.httpClient.request<any>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -254,10 +254,10 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAllBrands(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<GetAllBrandResponse>>;
-    public getAllBrands(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<GetAllBrandResponse>>>;
-    public getAllBrands(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<GetAllBrandResponse>>>;
-    public getAllBrands(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public getAllRentals(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<GetAllRentalResponse>>;
+    public getAllRentals(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<GetAllRentalResponse>>>;
+    public getAllRentals(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<GetAllRentalResponse>>>;
+    public getAllRentals(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -296,8 +296,8 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
             }
         }
 
-        let localVarPath = `/api/v1/brands`;
-        return this.httpClient.request<Array<GetAllBrandResponse>>('get', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/api/v1/rentals`;
+        return this.httpClient.request<Array<GetAllRentalResponse>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -315,13 +315,13 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getBrandById(requestParameters: GetBrandByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetBrandByIdResponse>;
-    public getBrandById(requestParameters: GetBrandByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetBrandByIdResponse>>;
-    public getBrandById(requestParameters: GetBrandByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetBrandByIdResponse>>;
-    public getBrandById(requestParameters: GetBrandByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public getRentalById(requestParameters: GetRentalByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetRentalByIdResponse>;
+    public getRentalById(requestParameters: GetRentalByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetRentalByIdResponse>>;
+    public getRentalById(requestParameters: GetRentalByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetRentalByIdResponse>>;
+    public getRentalById(requestParameters: GetRentalByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         const id = requestParameters.id;
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getBrandById.');
+            throw new Error('Required parameter id was null or undefined when calling getRentalById.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -361,8 +361,8 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
             }
         }
 
-        let localVarPath = `/api/v1/brands/getById/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
-        return this.httpClient.request<GetBrandByIdResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/api/v1/rentals/getById/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
+        return this.httpClient.request<GetRentalByIdResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -380,17 +380,17 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateBrandById(requestParameters: UpdateBrandByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<UpdateBrandResponse>;
-    public updateBrandById(requestParameters: UpdateBrandByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UpdateBrandResponse>>;
-    public updateBrandById(requestParameters: UpdateBrandByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<UpdateBrandResponse>>;
-    public updateBrandById(requestParameters: UpdateBrandByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public updateRentalById(requestParameters: UpdateRentalByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<UpdateRentalResponse>;
+    public updateRentalById(requestParameters: UpdateRentalByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UpdateRentalResponse>>;
+    public updateRentalById(requestParameters: UpdateRentalByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<UpdateRentalResponse>>;
+    public updateRentalById(requestParameters: UpdateRentalByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         const id = requestParameters.id;
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling updateBrandById.');
+            throw new Error('Required parameter id was null or undefined when calling updateRentalById.');
         }
-        const updateBrandRequest = requestParameters.updateBrandRequest;
-        if (updateBrandRequest === null || updateBrandRequest === undefined) {
-            throw new Error('Required parameter updateBrandRequest was null or undefined when calling updateBrandById.');
+        const updateRentalRequest = requestParameters.updateRentalRequest;
+        if (updateRentalRequest === null || updateRentalRequest === undefined) {
+            throw new Error('Required parameter updateRentalRequest was null or undefined when calling updateRentalById.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -438,11 +438,11 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
             }
         }
 
-        let localVarPath = `/api/v1/brands/update/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
-        return this.httpClient.request<UpdateBrandResponse>('put', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/api/v1/rentals/update/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
+        return this.httpClient.request<UpdateRentalResponse>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: updateBrandRequest,
+                body: updateRentalRequest,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

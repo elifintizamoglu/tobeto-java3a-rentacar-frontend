@@ -19,39 +19,39 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { CreateBrandRequest } from '../model/create-brand-request';
+import { CreateUserRequest } from '../model/create-user-request';
 // @ts-ignore
-import { CreateBrandResponse } from '../model/create-brand-response';
+import { CreateUserResponse } from '../model/create-user-response';
 // @ts-ignore
-import { GetAllBrandResponse } from '../model/get-all-brand-response';
+import { GetAllUserResponse } from '../model/get-all-user-response';
 // @ts-ignore
-import { GetBrandByIdResponse } from '../model/get-brand-by-id-response';
+import { GetUserByIdResponse } from '../model/get-user-by-id-response';
 // @ts-ignore
 import { ResourceNotFoundDetails } from '../model/resource-not-found-details';
 // @ts-ignore
-import { UpdateBrandRequest } from '../model/update-brand-request';
-// @ts-ignore
-import { UpdateBrandResponse } from '../model/update-brand-response';
-// @ts-ignore
 import { UpdateUserById400Response } from '../model/update-user-by-id400-response';
+// @ts-ignore
+import { UpdateUserRequest } from '../model/update-user-request';
+// @ts-ignore
+import { UpdateUserResponse } from '../model/update-user-response';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 import {
-    BrandsControllerServiceInterface,
-    AddBrandRequestParams,
-    DeleteBrandByIdRequestParams,
-    GetBrandByIdRequestParams,
-    UpdateBrandByIdRequestParams
-} from './brands-controller.serviceInterface';
+    UsersControllerServiceInterface,
+    AddUserRequestParams,
+    DeleteUserByIdRequestParams,
+    GetUserByIdRequestParams,
+    UpdateUserByIdRequestParams
+} from './users-controller.serviceInterface';
 
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class BrandsControllerService implements BrandsControllerServiceInterface {
+export class UsersControllerService implements UsersControllerServiceInterface {
 
     protected basePath = 'http://localhost:8080';
     public defaultHeaders = new HttpHeaders();
@@ -117,13 +117,13 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addBrand(requestParameters: AddBrandRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<CreateBrandResponse>;
-    public addBrand(requestParameters: AddBrandRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CreateBrandResponse>>;
-    public addBrand(requestParameters: AddBrandRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CreateBrandResponse>>;
-    public addBrand(requestParameters: AddBrandRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        const createBrandRequest = requestParameters.createBrandRequest;
-        if (createBrandRequest === null || createBrandRequest === undefined) {
-            throw new Error('Required parameter createBrandRequest was null or undefined when calling addBrand.');
+    public addUser(requestParameters: AddUserRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<CreateUserResponse>;
+    public addUser(requestParameters: AddUserRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CreateUserResponse>>;
+    public addUser(requestParameters: AddUserRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CreateUserResponse>>;
+    public addUser(requestParameters: AddUserRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        const createUserRequest = requestParameters.createUserRequest;
+        if (createUserRequest === null || createUserRequest === undefined) {
+            throw new Error('Required parameter createUserRequest was null or undefined when calling addUser.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -171,11 +171,11 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
             }
         }
 
-        let localVarPath = `/api/v1/brands`;
-        return this.httpClient.request<CreateBrandResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/api/v1/users`;
+        return this.httpClient.request<CreateUserResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: createBrandRequest,
+                body: createUserRequest,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
@@ -191,13 +191,13 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public deleteUserById(requestParameters: DeleteUserByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public deleteUserById(requestParameters: DeleteUserByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public deleteUserById(requestParameters: DeleteUserByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public deleteUserById(requestParameters: DeleteUserByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         const id = requestParameters.id;
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteBrandById.');
+            throw new Error('Required parameter id was null or undefined when calling deleteUserById.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -236,7 +236,7 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
             }
         }
 
-        let localVarPath = `/api/v1/brands/delete/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
+        let localVarPath = `/api/v1/users/delete/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
         return this.httpClient.request<any>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -254,10 +254,10 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAllBrands(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<GetAllBrandResponse>>;
-    public getAllBrands(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<GetAllBrandResponse>>>;
-    public getAllBrands(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<GetAllBrandResponse>>>;
-    public getAllBrands(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public getAllUsers(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<GetAllUserResponse>>;
+    public getAllUsers(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<GetAllUserResponse>>>;
+    public getAllUsers(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<GetAllUserResponse>>>;
+    public getAllUsers(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -296,8 +296,8 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
             }
         }
 
-        let localVarPath = `/api/v1/brands`;
-        return this.httpClient.request<Array<GetAllBrandResponse>>('get', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/api/v1/users`;
+        return this.httpClient.request<Array<GetAllUserResponse>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -315,13 +315,13 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getBrandById(requestParameters: GetBrandByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetBrandByIdResponse>;
-    public getBrandById(requestParameters: GetBrandByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetBrandByIdResponse>>;
-    public getBrandById(requestParameters: GetBrandByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetBrandByIdResponse>>;
-    public getBrandById(requestParameters: GetBrandByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public getUserById(requestParameters: GetUserByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetUserByIdResponse>;
+    public getUserById(requestParameters: GetUserByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetUserByIdResponse>>;
+    public getUserById(requestParameters: GetUserByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetUserByIdResponse>>;
+    public getUserById(requestParameters: GetUserByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         const id = requestParameters.id;
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getBrandById.');
+            throw new Error('Required parameter id was null or undefined when calling getUserById.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -361,8 +361,8 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
             }
         }
 
-        let localVarPath = `/api/v1/brands/getById/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
-        return this.httpClient.request<GetBrandByIdResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/api/v1/users/getById/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
+        return this.httpClient.request<GetUserByIdResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -380,17 +380,17 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateBrandById(requestParameters: UpdateBrandByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<UpdateBrandResponse>;
-    public updateBrandById(requestParameters: UpdateBrandByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UpdateBrandResponse>>;
-    public updateBrandById(requestParameters: UpdateBrandByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<UpdateBrandResponse>>;
-    public updateBrandById(requestParameters: UpdateBrandByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public updateUserById(requestParameters: UpdateUserByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<UpdateUserResponse>;
+    public updateUserById(requestParameters: UpdateUserByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UpdateUserResponse>>;
+    public updateUserById(requestParameters: UpdateUserByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<UpdateUserResponse>>;
+    public updateUserById(requestParameters: UpdateUserByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         const id = requestParameters.id;
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling updateBrandById.');
+            throw new Error('Required parameter id was null or undefined when calling updateUserById.');
         }
-        const updateBrandRequest = requestParameters.updateBrandRequest;
-        if (updateBrandRequest === null || updateBrandRequest === undefined) {
-            throw new Error('Required parameter updateBrandRequest was null or undefined when calling updateBrandById.');
+        const updateUserRequest = requestParameters.updateUserRequest;
+        if (updateUserRequest === null || updateUserRequest === undefined) {
+            throw new Error('Required parameter updateUserRequest was null or undefined when calling updateUserById.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -438,11 +438,11 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
             }
         }
 
-        let localVarPath = `/api/v1/brands/update/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
-        return this.httpClient.request<UpdateBrandResponse>('put', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/api/v1/users/update/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
+        return this.httpClient.request<UpdateUserResponse>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                body: updateBrandRequest,
+                body: updateUserRequest,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

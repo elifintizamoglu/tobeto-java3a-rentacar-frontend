@@ -64,7 +64,7 @@ export class EditModelFormComponent implements OnInit {
   }
 
   edit() {
-    this.modelsService.updateModel({
+    this.modelsService.updateModelById({
       id: this.modelId, updateModelRequest: {
         name: this.form.value.name,
         brandId: 0,

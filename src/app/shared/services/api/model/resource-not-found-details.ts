@@ -11,14 +11,10 @@
  */
 
 
-export interface GetAllModelResponse { 
-    id?: number;
-    name?: string;
-    brandId?: number;
-    brandName?: string;
-    fuelId?: number;
-    fuelName?: string;
-    transmissionId?: number;
-    transmissionName?: string;
+export interface ResourceNotFoundDetails { 
+    title?: string;
+    detail?: string;
+    type?: string;
+    status?: string;
 }
 

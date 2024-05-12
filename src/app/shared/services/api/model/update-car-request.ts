@@ -11,16 +11,14 @@
  */
 
 
-export interface GetAllCarResponse { 
-    id?: number;
-    modelYear?: number;
+export interface UpdateCarRequest { 
+    modelYear: number;
     plate?: string;
-    state?: GetAllCarResponse.StateEnum;
+    state?: UpdateCarRequest.StateEnum;
     dailyPrice?: number;
     modelId?: number;
-    modelName?: string;
 }
-export namespace GetAllCarResponse {
+export namespace UpdateCarRequest {
     export type StateEnum = 'AVAILABLE' | 'RENTED' | 'MAINTENANCE' | 'OUT_OF_SERVICE';
     export const StateEnum = {
         Available: 'AVAILABLE' as StateEnum,

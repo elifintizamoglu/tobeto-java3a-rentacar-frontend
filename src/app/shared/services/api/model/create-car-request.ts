@@ -13,9 +13,19 @@
 
 export interface CreateCarRequest { 
     modelYear: number;
-    plate: string;
-    state: number;
+    plate?: string;
+    state?: CreateCarRequest.StateEnum;
     dailyPrice?: number;
-    modelId: number;
+    modelId?: number;
 }
+export namespace CreateCarRequest {
+    export type StateEnum = 'AVAILABLE' | 'RENTED' | 'MAINTENANCE' | 'OUT_OF_SERVICE';
+    export const StateEnum = {
+        Available: 'AVAILABLE' as StateEnum,
+        Rented: 'RENTED' as StateEnum,
+        Maintenance: 'MAINTENANCE' as StateEnum,
+        OutOfService: 'OUT_OF_SERVICE' as StateEnum
+    };
+}
+
 

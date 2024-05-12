@@ -11,14 +11,13 @@
  */
 
 
-export interface GetAllModelResponse { 
+export interface GetAllRentalResponse { 
     id?: number;
-    name?: string;
-    brandId?: number;
-    brandName?: string;
-    fuelId?: number;
-    fuelName?: string;
-    transmissionId?: number;
-    transmissionName?: string;
+    carPlate?: string;
+    userFirstName?: string;
+    userLastName?: string;
+    startDate?: string;
+    endDate?: string;
+    totalPrice?: number;
 }
 

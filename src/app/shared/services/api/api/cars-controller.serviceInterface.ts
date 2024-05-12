@@ -14,16 +14,33 @@ import { HttpHeaders }                                       from '@angular/comm
 import { Observable }                                        from 'rxjs';
 
 import { CreateCarRequest } from '../model/models';
-import { CreatedCarResponse } from '../model/models';
+import { CreateCarResponse } from '../model/models';
 import { GetAllCarResponse } from '../model/models';
-import { UpdateModel400Response } from '../model/models';
+import { GetCarByIdResponse } from '../model/models';
+import { ResourceNotFoundDetails } from '../model/models';
+import { UpdateCarRequest } from '../model/models';
+import { UpdateCarResponse } from '../model/models';
+import { UpdateUserById400Response } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
 
 
-export interface Add2RequestParams {
+export interface AddCarRequestParams {
     createCarRequest: CreateCarRequest;
+}
+
+export interface DeleteCarByIdRequestParams {
+    id: number;
+}
+
+export interface GetCarByIdRequestParams {
+    id: number;
+}
+
+export interface UpdateCarByIdRequestParams {
+    id: number;
+    updateCarRequest: UpdateCarRequest;
 }
 
 
@@ -36,12 +53,33 @@ export interface CarsControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    add2(requestParameters: Add2RequestParams, extraHttpRequestParams?: any): Observable<CreatedCarResponse>;
+    addCar(requestParameters: AddCarRequestParams, extraHttpRequestParams?: any): Observable<CreateCarResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    deleteCarById(requestParameters: DeleteCarByIdRequestParams, extraHttpRequestParams?: any): Observable<{}>;
 
     /**
      * 
      * 
 */
-    getAll2(extraHttpRequestParams?: any): Observable<Array<GetAllCarResponse>>;
+    getAllCars(extraHttpRequestParams?: any): Observable<Array<GetAllCarResponse>>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    getCarById(requestParameters: GetCarByIdRequestParams, extraHttpRequestParams?: any): Observable<GetCarByIdResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    updateCarById(requestParameters: UpdateCarByIdRequestParams, extraHttpRequestParams?: any): Observable<UpdateCarResponse>;
 
 }

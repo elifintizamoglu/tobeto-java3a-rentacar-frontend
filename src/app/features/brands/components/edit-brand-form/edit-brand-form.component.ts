@@ -65,7 +65,7 @@ export class EditBrandFormComponent implements OnInit {
   }
 
   edit() {
-    this.brandsService.updateBrand({
+    this.brandsService.updateBrandById({
       id: this.brandId, updateBrandRequest: {
         name: this.form.value.name,
       },

@@ -14,12 +14,13 @@ import { HttpHeaders }                                       from '@angular/comm
 import { Observable }                                        from 'rxjs';
 
 import { CreateBrandRequest } from '../model/models';
-import { CreatedBrandResponse } from '../model/models';
+import { CreateBrandResponse } from '../model/models';
 import { GetAllBrandResponse } from '../model/models';
 import { GetBrandByIdResponse } from '../model/models';
+import { ResourceNotFoundDetails } from '../model/models';
 import { UpdateBrandRequest } from '../model/models';
 import { UpdateBrandResponse } from '../model/models';
-import { UpdateModel400Response } from '../model/models';
+import { UpdateUserById400Response } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
@@ -37,7 +38,7 @@ export interface GetBrandByIdRequestParams {
     id: number;
 }
 
-export interface UpdateBrandRequestParams {
+export interface UpdateBrandByIdRequestParams {
     id: number;
     updateBrandRequest: UpdateBrandRequest;
 }
@@ -52,7 +53,7 @@ export interface BrandsControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    addBrand(requestParameters: AddBrandRequestParams, extraHttpRequestParams?: any): Observable<CreatedBrandResponse>;
+    addBrand(requestParameters: AddBrandRequestParams, extraHttpRequestParams?: any): Observable<CreateBrandResponse>;
 
     /**
      * 
@@ -79,6 +80,6 @@ export interface BrandsControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    updateBrand(requestParameters: UpdateBrandRequestParams, extraHttpRequestParams?: any): Observable<UpdateBrandResponse>;
+    updateBrandById(requestParameters: UpdateBrandByIdRequestParams, extraHttpRequestParams?: any): Observable<UpdateBrandResponse>;
 
 }

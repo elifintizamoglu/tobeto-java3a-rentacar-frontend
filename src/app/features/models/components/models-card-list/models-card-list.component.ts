@@ -61,14 +61,14 @@ export class ModelsCardListComponent
     });
 
     // Fuel
-    this.fuelsService.getAll1().subscribe((fuels) => {
+    this.fuelsService.getAllFuels().subscribe((fuels) => {
       this.fuels = fuels;
       this.change.markForCheck();
     });
 
     // Transmission
     this.transmissionsService
-      .getAll()
+      .getAllTransmissions()
       .subscribe((transmissions) => {
         this.transmissions = transmissions;
         this.change.markForCheck();

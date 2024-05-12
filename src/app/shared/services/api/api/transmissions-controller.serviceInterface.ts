@@ -14,16 +14,33 @@ import { HttpHeaders }                                       from '@angular/comm
 import { Observable }                                        from 'rxjs';
 
 import { CreateTransmissionRequest } from '../model/models';
-import { CreatedTransmissionResponse } from '../model/models';
+import { CreateTransmissionResponse } from '../model/models';
 import { GetAllTransmissionResponse } from '../model/models';
-import { UpdateModel400Response } from '../model/models';
+import { GetTransmissionByIdResponse } from '../model/models';
+import { ResourceNotFoundDetails } from '../model/models';
+import { UpdateTransmissionRequest } from '../model/models';
+import { UpdateTransmissionResponse } from '../model/models';
+import { UpdateUserById400Response } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
 
 
-export interface AddRequestParams {
+export interface AddTransmissionRequestParams {
     createTransmissionRequest: CreateTransmissionRequest;
+}
+
+export interface DeleteTransmissionByIdRequestParams {
+    id: number;
+}
+
+export interface GetTransmissionByIdRequestParams {
+    id: number;
+}
+
+export interface UpdateTransmissionByIdRequestParams {
+    id: number;
+    updateTransmissionRequest: UpdateTransmissionRequest;
 }
 
 
@@ -36,12 +53,33 @@ export interface TransmissionsControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    add(requestParameters: AddRequestParams, extraHttpRequestParams?: any): Observable<CreatedTransmissionResponse>;
+    addTransmission(requestParameters: AddTransmissionRequestParams, extraHttpRequestParams?: any): Observable<CreateTransmissionResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    deleteTransmissionById(requestParameters: DeleteTransmissionByIdRequestParams, extraHttpRequestParams?: any): Observable<{}>;
 
     /**
      * 
      * 
 */
-    getAll(extraHttpRequestParams?: any): Observable<Array<GetAllTransmissionResponse>>;
+    getAllTransmissions(extraHttpRequestParams?: any): Observable<Array<GetAllTransmissionResponse>>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    getTransmissionById(requestParameters: GetTransmissionByIdRequestParams, extraHttpRequestParams?: any): Observable<GetTransmissionByIdResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    updateTransmissionById(requestParameters: UpdateTransmissionByIdRequestParams, extraHttpRequestParams?: any): Observable<UpdateTransmissionResponse>;
 
 }

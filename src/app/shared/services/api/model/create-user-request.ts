@@ -11,14 +11,10 @@
  */
 
 
-export interface GetAllModelResponse { 
-    id?: number;
-    name?: string;
-    brandId?: number;
-    brandName?: string;
-    fuelId?: number;
-    fuelName?: string;
-    transmissionId?: number;
-    transmissionName?: string;
+export interface CreateUserRequest { 
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
 }
 

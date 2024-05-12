@@ -14,12 +14,13 @@ import { HttpHeaders }                                       from '@angular/comm
 import { Observable }                                        from 'rxjs';
 
 import { CreateModelRequest } from '../model/models';
-import { CreatedModelResponse } from '../model/models';
+import { CreateModelResponse } from '../model/models';
 import { GetAllModelResponse } from '../model/models';
 import { GetModelByIdResponse } from '../model/models';
-import { UpdateModel400Response } from '../model/models';
+import { ResourceNotFoundDetails } from '../model/models';
 import { UpdateModelRequest } from '../model/models';
 import { UpdateModelResponse } from '../model/models';
+import { UpdateUserById400Response } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
@@ -37,7 +38,7 @@ export interface GetModelByIdRequestParams {
     id: number;
 }
 
-export interface UpdateModelRequestParams {
+export interface UpdateModelByIdRequestParams {
     id: number;
     updateModelRequest: UpdateModelRequest;
 }
@@ -52,7 +53,7 @@ export interface ModelsControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    addModel(requestParameters: AddModelRequestParams, extraHttpRequestParams?: any): Observable<CreatedModelResponse>;
+    addModel(requestParameters: AddModelRequestParams, extraHttpRequestParams?: any): Observable<CreateModelResponse>;
 
     /**
      * 
@@ -79,6 +80,6 @@ export interface ModelsControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    updateModel(requestParameters: UpdateModelRequestParams, extraHttpRequestParams?: any): Observable<UpdateModelResponse>;
+    updateModelById(requestParameters: UpdateModelByIdRequestParams, extraHttpRequestParams?: any): Observable<UpdateModelResponse>;
 
 }

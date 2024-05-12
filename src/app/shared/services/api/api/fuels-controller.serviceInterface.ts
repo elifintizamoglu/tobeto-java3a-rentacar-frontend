@@ -14,16 +14,33 @@ import { HttpHeaders }                                       from '@angular/comm
 import { Observable }                                        from 'rxjs';
 
 import { CreateFuelRequest } from '../model/models';
-import { CreatedFuelResponse } from '../model/models';
+import { CreateFuelResponse } from '../model/models';
 import { GetAllFuelResponse } from '../model/models';
-import { UpdateModel400Response } from '../model/models';
+import { GetFuelByIdResponse } from '../model/models';
+import { ResourceNotFoundDetails } from '../model/models';
+import { UpdateFuelRequest } from '../model/models';
+import { UpdateFuelResponse } from '../model/models';
+import { UpdateUserById400Response } from '../model/models';
 
 
 import { Configuration }                                     from '../configuration';
 
 
-export interface Add1RequestParams {
+export interface AddFuelRequestParams {
     createFuelRequest: CreateFuelRequest;
+}
+
+export interface DeleteFuelByIdRequestParams {
+    id: number;
+}
+
+export interface GetFuelByIdRequestParams {
+    id: number;
+}
+
+export interface UpdateFuelByIdRequestParams {
+    id: number;
+    updateFuelRequest: UpdateFuelRequest;
 }
 
 
@@ -36,12 +53,33 @@ export interface FuelsControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    add1(requestParameters: Add1RequestParams, extraHttpRequestParams?: any): Observable<CreatedFuelResponse>;
+    addFuel(requestParameters: AddFuelRequestParams, extraHttpRequestParams?: any): Observable<CreateFuelResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    deleteFuelById(requestParameters: DeleteFuelByIdRequestParams, extraHttpRequestParams?: any): Observable<{}>;
 
     /**
      * 
      * 
 */
-    getAll1(extraHttpRequestParams?: any): Observable<Array<GetAllFuelResponse>>;
+    getAllFuels(extraHttpRequestParams?: any): Observable<Array<GetAllFuelResponse>>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    getFuelById(requestParameters: GetFuelByIdRequestParams, extraHttpRequestParams?: any): Observable<GetFuelByIdResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    updateFuelById(requestParameters: UpdateFuelByIdRequestParams, extraHttpRequestParams?: any): Observable<UpdateFuelResponse>;
 
 }
