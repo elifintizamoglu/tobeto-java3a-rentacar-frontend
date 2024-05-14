@@ -25,9 +25,8 @@ import { ModelsCardListComponent } from '../../features/models/components/models
 export class HomePageComponent implements OnInit {
   selectedBrandId: number | null = null;
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
-  }
   ngOnInit(): void {
     this.getSelectedBrandIdFromRoute();
   }
@@ -37,7 +36,7 @@ export class HomePageComponent implements OnInit {
   getSelectedBrandIdFromRoute() {  // route'u url'i kontrol ediyor olucaz. query parametresi varsa o id'yi state olarak buraya atayabilicez.
     this.route.queryParams.subscribe((params) => {
       // bu şekilde objenin alanlarına erişmeye çalışır params['brandId'] ile 
-      if(params['brandId'] && this.selectedBrandId !== Number.parseInt(params['brandId']))  // brandId varsa ve selectedBrandId ile queryParamdan farklıysa o zaman ata
+      if (params['brandId'] && this.selectedBrandId !== Number.parseInt(params['brandId']))  // brandId varsa ve selectedBrandId ile queryParamdan farklıysa o zaman ata
         this.selectedBrandId = Number.parseInt(params['brandId']); // string geleceği için int'e çeviriyoruz
     });
   }
