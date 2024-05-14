@@ -9,7 +9,7 @@ import {
 import { ModelsListBaseComponent } from '../models-list-base/models-list-base.component';
 import { ModelsControllerService } from '../../../../shared/services/api/api/models-controller.service';
 import { CardComponent } from '../../../../shared/components/card/card.component';
-import { BrandsControllerService, FuelsControllerService, GetAllModelResponse, TransmissionsControllerService } from '../../../../shared/services/api';
+import { GetAllModelResponse } from '../../../../shared/services/api';
 
 @Component({
   selector: 'app-models-card-list',
@@ -25,13 +25,7 @@ export class ModelsCardListComponent
 
   @Input() brandId: number | null = null;
 
-  constructor(
-    private modelsControllerService: ModelsControllerService,
-    private brandsService: BrandsControllerService,
-    private fuelsService: FuelsControllerService,
-    private transmissionsService: TransmissionsControllerService,
-    change: ChangeDetectorRef
-  ) {
+  constructor(modelsControllerService: ModelsControllerService, change: ChangeDetectorRef) {
     super(modelsControllerService, change);
   }
 

@@ -7,6 +7,7 @@ import { BrandListItemDto } from '../../features/brands/models/brand-list-item-d
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetAllBrandResponse } from '../../shared/services/api';
 import { ModelsCardListComponent } from '../../features/models/components/models-card-list/models-card-list.component';
+import { ModelsListMenuComponent } from '../../features/models/components/models-list-menu/models-list-menu.component';
 
 @Component({
   selector: 'app-home-page',
@@ -17,6 +18,7 @@ import { ModelsCardListComponent } from '../../features/models/components/models
     ButtonComponent,
     BrandsListMenuComponent,
     ModelsCardListComponent,
+    ModelsListMenuComponent,
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
@@ -41,8 +43,8 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  onSelectBrand(seletedBrand: GetAllBrandResponse | null) {
-    this.selectedBrandId = seletedBrand?.id ?? null; //sol taraf boş bir değerse sağdaki değeri geç
+  onSelectBrand(selectedBrand: GetAllBrandResponse | null) {
+    this.selectedBrandId = selectedBrand?.id ?? null; //sol taraf boş bir değerse sağdaki değeri geç
 
     if (this.selectedBrandId !== null)  // selected brand varsa route değiştirmek istemiyoruz / selectedBrandId null değilse if'in içine gir
       this.router.navigate([''], { // birinci parametre path'i değiştirmek için ne gireceğimizi gösterir. 

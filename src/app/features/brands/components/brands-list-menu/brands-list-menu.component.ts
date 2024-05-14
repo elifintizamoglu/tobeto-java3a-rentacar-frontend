@@ -1,12 +1,8 @@
 import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
-  EventEmitter,
-  Input,
   OnInit,
-  Output,
 } from '@angular/core';
 import {
   MenuComponent,

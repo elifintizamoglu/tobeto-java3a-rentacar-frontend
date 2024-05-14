@@ -19,24 +19,17 @@ export class BrandsListBaseComponent {
 
   constructor(brandsService: BrandsControllerService, private change: ChangeDetectorRef) {
     this.brandsService = brandsService;
-   }
+  }
 
-  // ngOnInit component ilk yerleştiğinde bir kez çalışır.
   ngOnInit(): void {
     this.getBrandsList();
   }
 
   getBrandsList() {
-    // subscribe olduk, subscribe olduğu anda çalışır
-    this.brandsService.getAllBrands().subscribe(async (response) => {
-      if (response instanceof Blob) {
-        const text = await response.text();
-        this.brands = JSON.parse(text);
-      } else {
-        this.brands = response;
-      }
+    this.brandsService.getAllBrands().subscribe((response) => {
 
-      //this.setSelectedBrand();
+      this.brands = response;
+
       if (this.initialSelectedBrandId) { // selectedBrandId var ise atamasını gerçekleştirir
         this.selectedBrand = this.brands.find(brand => brand.id === this.initialSelectedBrandId) ?? null;
         this.initialSelectedBrandIndex = this.brands.findIndex((brand) => brand.id === this.initialSelectedBrandId);

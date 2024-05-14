@@ -27,9 +27,9 @@ export class ModelsListBaseComponent {
 
   getModelsList() {
     // subscribe olduk, subscribe olduğu anda çalışır
-    this.modelsService.getAllModels().subscribe( (response) => {  
-        this.models = response;
-  
+    this.modelsService.getAllModels().subscribe((response) => {
+      this.models = response;
+
       //this.setSelectedModel();
       if (this.initialSelectedModelId) { // selectedModelId var ise atamasını gerçekleştirir
         this.selectedModel = this.models.find(model => model.id === this.initialSelectedModelId) ?? null;
