@@ -1,0 +1,14 @@
+<h6>Select Brand</h6>
+<select class="form-select" aria-label="Default select example" [(ngModel)]="selectedBrand"
+    (change)="onChange($any($event.target).value)">
+    <option selected>...</option>
+    <option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name }}</option>
+</select>
+
+<h6>Select Model</h6>
+<select class="form-select" aria-label="Default select example" [disabled]="!selectedBrand">
+    <option selected>...</option>
+    <option *ngFor="let model of models">{{ model.name }}</option>
+</select>
+
+  

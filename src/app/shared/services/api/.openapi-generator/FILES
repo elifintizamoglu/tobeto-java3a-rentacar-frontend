@@ -46,6 +46,7 @@ model/get-brand-by-id-response.ts
 model/get-car-by-id-response.ts
 model/get-fuel-by-id-response.ts
 model/get-model-by-id-response.ts
+model/get-models-by-brand-id-response.ts
 model/get-rental-by-id-response.ts
 model/get-transmission-by-id-response.ts
 model/get-user-by-id-response.ts

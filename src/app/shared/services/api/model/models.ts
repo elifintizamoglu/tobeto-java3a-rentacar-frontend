@@ -24,6 +24,7 @@ export * from './get-brand-by-id-response';
 export * from './get-car-by-id-response';
 export * from './get-fuel-by-id-response';
 export * from './get-model-by-id-response';
+export * from './get-models-by-brand-id-response';
 export * from './get-rental-by-id-response';
 export * from './get-transmission-by-id-response';
 export * from './get-user-by-id-response';

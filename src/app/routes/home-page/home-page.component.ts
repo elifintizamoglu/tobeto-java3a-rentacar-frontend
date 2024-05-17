@@ -3,8 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { HomeLayoutComponent } from '../../shared/layouts/home-layout/home-layout.component';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { BrandsListMenuComponent } from '../../features/brands/components/brands-list-menu/brands-list-menu.component';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { GetAllBrandResponse } from '../../shared/services/api';
+import { RouterModule } from '@angular/router';
 import { ModelsCardListComponent } from '../../features/models/components/models-card-list/models-card-list.component';
 import { ModelsListMenuComponent } from '../../features/models/components/models-list-menu/models-list-menu.component';
 
@@ -24,6 +23,6 @@ import { ModelsListMenuComponent } from '../../features/models/components/models
   styleUrl: './home-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePageComponent /*implements OnInit */{
+export class HomePageComponent {
  
 }
