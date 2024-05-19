@@ -1,14 +1,34 @@
-<h6>Select Brand</h6>
-<select class="form-select" aria-label="Default select example" [(ngModel)]="selectedBrand"
-    (change)="onChange($any($event.target).value)">
-    <option selected>...</option>
-    <option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name }}</option>
-</select>
+<form [formGroup]="filterForm">
+    <h6>Select Brand</h6>
+    <select class="form-select" aria-label="Default select example" formControlName="brand" [(ngModel)]="selectedBrand"
+    (change)="onChange($any($event.target).value)">>
+      <option value="">...</option>
+      <option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name }}</option>
+    </select>
+  
+    <h6>Select Model</h6>
+    <select class="form-select" aria-label="Default select example" formControlName="model" [disabled]="!selectedBrand">
+      <option value="">...</option>
+      <option *ngFor="let model of models" [value]="model.id">{{ model.name }}</option>
+    </select>
+  
+    <h6>Select Fuel</h6>
+    <select class="form-select" aria-label="Default select example" formControlName="fuel">
+      <option value="">...</option>
+      <option *ngFor="let fuel of fuels" [value]="fuel.id">{{ fuel.name }}</option>
+    </select>
+  
+    <h6>Select Transmission</h6>
+    <select class="form-select" aria-label="Default select example" formControlName="transmission">
+      <option value="">...</option>
+      <option *ngFor="let transmission of transmissions" [value]="transmission.id">{{ transmission.name }}</option>
+    </select>
 
-<h6>Select Model</h6>
-<select class="form-select" aria-label="Default select example" [disabled]="!selectedBrand">
-    <option selected>...</option>
-    <option *ngFor="let model of models">{{ model.name }}</option>
-</select>
-
+    <app-button type="submit" class="mt-3" (click)="searchCars()">Ara</app-button>
+  </form>
+  
+  <h4 class="mt-3">Cars:</h4>
+  <ul>
+    <li *ngFor="let car of cars">{{ car.plate }}</li>
+  </ul>
   

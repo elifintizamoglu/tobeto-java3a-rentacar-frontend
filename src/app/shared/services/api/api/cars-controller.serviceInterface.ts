@@ -17,6 +17,7 @@ import { CreateCarRequest } from '../model/models';
 import { CreateCarResponse } from '../model/models';
 import { GetAllCarResponse } from '../model/models';
 import { GetCarByIdResponse } from '../model/models';
+import { GetCarsByFiltersResponse } from '../model/models';
 import { ResourceNotFoundDetails } from '../model/models';
 import { UpdateCarRequest } from '../model/models';
 import { UpdateCarResponse } from '../model/models';
@@ -36,6 +37,13 @@ export interface DeleteCarByIdRequestParams {
 
 export interface GetCarByIdRequestParams {
     id: number;
+}
+
+export interface GetCarsByFiltersRequestParams {
+    brandId?: number;
+    modelId?: number;
+    fuelId?: number;
+    transmissionId?: number;
 }
 
 export interface UpdateCarByIdRequestParams {
@@ -74,6 +82,13 @@ export interface CarsControllerServiceInterface {
 * @param requestParameters
      */
     getCarById(requestParameters: GetCarByIdRequestParams, extraHttpRequestParams?: any): Observable<GetCarByIdResponse>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    getCarsByFilters(requestParameters: GetCarsByFiltersRequestParams, extraHttpRequestParams?: any): Observable<Array<GetCarsByFiltersResponse>>;
 
     /**
      * 

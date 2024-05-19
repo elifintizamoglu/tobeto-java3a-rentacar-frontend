@@ -44,6 +44,7 @@ model/get-all-transmission-response.ts
 model/get-all-user-response.ts
 model/get-brand-by-id-response.ts
 model/get-car-by-id-response.ts
+model/get-cars-by-filters-response.ts
 model/get-fuel-by-id-response.ts
 model/get-model-by-id-response.ts
 model/get-models-by-brand-id-response.ts

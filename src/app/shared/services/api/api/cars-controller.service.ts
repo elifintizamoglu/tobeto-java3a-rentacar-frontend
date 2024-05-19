@@ -27,6 +27,8 @@ import { GetAllCarResponse } from '../model/get-all-car-response';
 // @ts-ignore
 import { GetCarByIdResponse } from '../model/get-car-by-id-response';
 // @ts-ignore
+import { GetCarsByFiltersResponse } from '../model/get-cars-by-filters-response';
+// @ts-ignore
 import { ResourceNotFoundDetails } from '../model/resource-not-found-details';
 // @ts-ignore
 import { UpdateCarRequest } from '../model/update-car-request';
@@ -43,6 +45,7 @@ import {
     AddCarRequestParams,
     DeleteCarByIdRequestParams,
     GetCarByIdRequestParams,
+    GetCarsByFiltersRequestParams,
     UpdateCarByIdRequestParams
 } from './cars-controller.serviceInterface';
 
@@ -365,6 +368,90 @@ export class CarsControllerService implements CarsControllerServiceInterface {
         return this.httpClient.request<GetCarByIdResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                transferCache: localVarTransferCache,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * @param requestParameters
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getCarsByFilters(requestParameters: GetCarsByFiltersRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<GetCarsByFiltersResponse>>;
+    public getCarsByFilters(requestParameters: GetCarsByFiltersRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<GetCarsByFiltersResponse>>>;
+    public getCarsByFilters(requestParameters: GetCarsByFiltersRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<GetCarsByFiltersResponse>>>;
+    public getCarsByFilters(requestParameters: GetCarsByFiltersRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        const brandId = requestParameters.brandId;
+        const modelId = requestParameters.modelId;
+        const fuelId = requestParameters.fuelId;
+        const transmissionId = requestParameters.transmissionId;
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        if (brandId !== undefined && brandId !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>brandId, 'brandId');
+        }
+        if (modelId !== undefined && modelId !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>modelId, 'modelId');
+        }
+        if (fuelId !== undefined && fuelId !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>fuelId, 'fuelId');
+        }
+        if (transmissionId !== undefined && transmissionId !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>transmissionId, 'transmissionId');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                '*/*',
+                'application/json'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+        let localVarTransferCache: boolean | undefined = options && options.transferCache;
+        if (localVarTransferCache === undefined) {
+            localVarTransferCache = true;
+        }
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/api/v1/cars/getByFilters`;
+        return this.httpClient.request<Array<GetCarsByFiltersResponse>>('get', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                params: localVarQueryParameters,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

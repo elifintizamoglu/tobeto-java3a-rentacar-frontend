@@ -22,6 +22,7 @@ export * from './get-all-transmission-response';
 export * from './get-all-user-response';
 export * from './get-brand-by-id-response';
 export * from './get-car-by-id-response';
+export * from './get-cars-by-filters-response';
 export * from './get-fuel-by-id-response';
 export * from './get-model-by-id-response';
 export * from './get-models-by-brand-id-response';
