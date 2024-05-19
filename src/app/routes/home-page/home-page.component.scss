@@ -2,19 +2,11 @@
   display: block;
 
   .app-overlay {
-    height: 30rem;
+    height: 35rem;
   }
 }
 
 .bg-image {
-  background-image: url('../../../assets/images/volvo.jpeg');
+  background-image: url('../../../assets/images/volvo2.jpg');
   background-size: cover;
-  background-position: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0.5;
-}
-
-.text-color {
-  color: #02552b;
-  opacity: 1.0;
 }

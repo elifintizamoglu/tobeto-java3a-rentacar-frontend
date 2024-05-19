@@ -1,9 +1,7 @@
 <app-home-layout>
-  <div
-    class="d-flex flex-column justify-content-center align-items-center app-overlay bg-image"
-  >
-    <h1 class="text-color">Welcome to our rental gallery!</h1>
-    <app-button [routerLink]="['/cars']"> View Cars </app-button>
+  <div class="d-flex flex-column justify-content-center app-overlay bg-image">
+    <h1 class="text-light text-opacity-100 text-start ms-5">Welcome to rental gallery!</h1>
+    <app-button class="ms-5" variant="warning" [routerLink]="['/cars']"> Discover Cars </app-button>
   </div>
   
 </app-home-layout>
