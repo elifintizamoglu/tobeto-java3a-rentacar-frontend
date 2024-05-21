@@ -17,8 +17,10 @@ export interface GetAllCarResponse {
     plate?: string;
     state?: GetAllCarResponse.StateEnum;
     dailyPrice?: number;
-    modelId?: number;
+    brandName?: string;
     modelName?: string;
+    fuelName?: string;
+    transmissionName?: string;
 }
 export namespace GetAllCarResponse {
     export type StateEnum = 'AVAILABLE' | 'RENTED' | 'MAINTENANCE' | 'OUT_OF_SERVICE';

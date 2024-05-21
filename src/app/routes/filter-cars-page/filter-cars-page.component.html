@@ -1,14 +1,14 @@
 <app-home-layout>
-    <div class="container ">
-      <div class="row mt-2">
-        <div class="col-2">
-          <h5>Filters</h5>
-           <app-cars-filter (carsFiltered)="onCarsFiltered($event)"></app-cars-filter>
-        </div>
-        <div class="col-8">
-          <app-cars-card-list [cars]="cars"></app-cars-card-list>
-        </div>
+  <div class="container ">
+    <div class="row mt-2">
+      <div class="col-md-3">
+        <h5>Filters</h5>
+        <app-cars-filter (carsFiltered)="onCarsFiltered($event)"></app-cars-filter>
+      </div>
+      <div class="col-9">
+        <app-cars-card-list [cars]="cars"></app-cars-card-list>
       </div>
     </div>
-  
-  </app-home-layout>
+  </div>
+
+</app-home-layout>

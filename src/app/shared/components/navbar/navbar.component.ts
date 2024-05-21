@@ -11,13 +11,13 @@ export type NavItem = {
 export type NavTitle = {
   text: string;
   routerLink?: string | string[];
-} | undefined; // NavTitle type'ı bu obje ya da undefined olabilir demek
+} | undefined;
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [
-    CommonModule, //ngFor
+    CommonModule,
     RouterModule,
     ButtonComponent
   ],

@@ -47,19 +47,32 @@ export class CarsFilterComponent implements OnInit {
     this.filterBase.getBrands().subscribe(brands => this.brands = brands);
     this.filterBase.getFuels().subscribe(fuels => this.fuels = fuels);
     this.filterBase.getTransmissions().subscribe(transmissions => this.transmissions = transmissions);
+    this.getCars();
 
     this.filterForm.get('brand')?.valueChanges.subscribe(id => {
       this.models = [];
       if (id) {
         this.filterBase.getModelsByBrandId({ id: +id }).subscribe(models => {
           this.models = models;
-          this.filterForm.get('model')?.setValue('');  // Modeli sıfırlama
+          this.filterForm.get('model')?.setValue('');
         });
       } else {
         this.models = [];
-        this.filterForm.get('model')?.setValue('');  // Modeli sıfırlama
+        this.filterForm.get('model')?.setValue('');
       }
     });
+  }
+
+  getCars() {
+    this.filterBase.getCars().subscribe(cars => {
+      this.cars = cars;
+      this.carsFiltered.emit(cars);
+    });
+  }
+
+  resetFilters() {
+    this.filterForm.reset();  
+    this.getCars();
   }
 
   searchCars() {
@@ -71,7 +84,7 @@ export class CarsFilterComponent implements OnInit {
       transmissionId: transmission ? +transmission : undefined,
     };
 
-    this.carService.getCarsByFilters(requestParams).subscribe(cars => {
+    this.filterBase.getCarsByFilters(requestParams).subscribe(cars => {
       this.cars = cars;
       this.carsFiltered.emit(cars);
       this.change.markForCheck();

@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HomeLayoutComponent } from '../../shared/layouts/home-layout/home-layout.component';
-import { SelectBoxComponent } from '../../shared/components/select-box/select-box.component';
 import { CarsFilterComponent } from '../../features/cars/components/cars-filter/cars-filter.component';
 import { GetCarsByFiltersResponse } from '../../shared/services/api';
 import { CarsCardListComponent } from '../../features/cars/components/cars-card-list/cars-card-list.component';
@@ -12,7 +11,6 @@ import { CarsCardListComponent } from '../../features/cars/components/cars-card-
   imports: [
     CommonModule,
     HomeLayoutComponent,
-    SelectBoxComponent,
     CarsFilterComponent,
     CarsCardListComponent,
   ],

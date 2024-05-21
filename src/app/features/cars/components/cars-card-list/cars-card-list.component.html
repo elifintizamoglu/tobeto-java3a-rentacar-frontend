@@ -1,4 +1,12 @@
 <h4 class="mt-3">Cars:</h4>
-<ul>
-  <li *ngFor="let car of cars">{{ car.plate }}</li>
-</ul>
+
+<div class="row">
+  <div class="col-6 mb-3" *ngFor="let car of cars; trackBy: trackByCarId">
+    <app-card
+      [title]="car.brandName + ' ' + car.modelName"
+      [text]="'Year: ' + car.modelYear + ', Plate: ' + car.plate + ', Daily Price: ' + car.dailyPrice + ', Fuel: ' + car.fuelName + ', Transmission: ' + car.transmissionName"
+      [imageSrc]="'https://cdn.cetas.com.tr/Delivery/Public/Image/-1x-1/HANGI_ARABA_HANGI_ULKE_02_sp5zy3n1im.jpg'"
+      buttonLabel="Rent"
+    ></app-card>
+  </div>
+</div>
