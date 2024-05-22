@@ -10,7 +10,7 @@
 </div>
 
 <ng-template #navbarEndContent>
-  <button class="btn btn-outline-light" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
+  <button [routerLink] = "['/login']" class="btn btn-outline-light" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">
     Login
   </button>
 </ng-template>

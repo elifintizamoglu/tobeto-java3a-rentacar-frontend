@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "generate:apiservices" : "openapi-generator-cli generate -i http://localhost:8080/v3/api-docs -g typescript-angular -o src/app/shared/services/api --additional-properties fileNaming=kebab-case,modelPropertyNaming=camelCase,withInterfaces=true,useSingleRequestParameter=true"  },
+    "generate:apiservices": "openapi-generator-cli generate -i http://localhost:8080/v3/api-docs -g typescript-angular -o src/app/shared/services/api --additional-properties fileNaming=kebab-case,modelPropertyNaming=camelCase,withInterfaces=true,useSingleRequestParameter=true"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^17.3.0",
@@ -19,6 +20,7 @@
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
     "bootstrap": "^5.3.3",
+    "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
