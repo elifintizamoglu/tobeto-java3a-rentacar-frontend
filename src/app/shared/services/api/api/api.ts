@@ -1,3 +1,6 @@
+export * from './authentication.service';
+import { AuthenticationService } from './authentication.service';
+export * from './authentication.serviceInterface';
 export * from './brands-controller.service';
 import { BrandsControllerService } from './brands-controller.service';
 export * from './brands-controller.serviceInterface';
@@ -19,4 +22,4 @@ export * from './transmissions-controller.serviceInterface';
 export * from './users-controller.service';
 import { UsersControllerService } from './users-controller.service';
 export * from './users-controller.serviceInterface';
-export const APIS = [BrandsControllerService, CarsControllerService, FuelsControllerService, ModelsControllerService, RentalsControllerService, TransmissionsControllerService, UsersControllerService];
+export const APIS = [AuthenticationService, BrandsControllerService, CarsControllerService, FuelsControllerService, ModelsControllerService, RentalsControllerService, TransmissionsControllerService, UsersControllerService];

@@ -1,3 +1,5 @@
+export * from './authentication-request';
+export * from './authentication-response';
 export * from './business-problem-details';
 export * from './create-brand-request';
 export * from './create-brand-response';
@@ -29,6 +31,7 @@ export * from './get-models-by-brand-id-response';
 export * from './get-rental-by-id-response';
 export * from './get-transmission-by-id-response';
 export * from './get-user-by-id-response';
+export * from './registration-request';
 export * from './resource-not-found-details';
 export * from './update-brand-request';
 export * from './update-brand-response';
