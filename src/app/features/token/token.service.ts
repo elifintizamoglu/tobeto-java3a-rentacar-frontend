@@ -10,11 +10,11 @@ export class TokenService {
     localStorage.setItem('token', token);
   }
 
-  get token() {
+  get token(): string {
     return localStorage.getItem('token') as string;
   }
 
-  isTokenValid() {
+  isTokenValid(): boolean {
     const token = this.token;
     if (!token) {
       return false;
@@ -30,7 +30,7 @@ export class TokenService {
     return true;
   }
 
-  isTokenNotValid() {
+  isTokenNotValid(): boolean {
     return !this.isTokenValid();
   }
 

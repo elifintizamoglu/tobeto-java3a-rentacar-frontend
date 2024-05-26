@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, forwardRef } from '@angular/core';
+import { FormsModule, ReactiveFormsModule, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
@@ -13,33 +13,45 @@ import { ButtonComponent } from '../button/button.component';
     ButtonComponent,
   ],
   templateUrl: './select-box.component.html',
-  
-  styleUrl: './select-box.component.scss',
+  styleUrls: ['./select-box.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SelectBoxComponent),
+      multi: true,
+    },
+  ],
 })
-export class SelectBoxComponent implements OnInit {
-
-
-  @Input() formControlName!: string;
+export class SelectBoxComponent implements ControlValueAccessor {
   @Input() label!: string;
   @Input() items: any[] = [];
   @Input() itemLabelKey!: string;
   @Input() itemValueKey!: string;
 
-  filterForm: FormGroup;
+  value: any;
+  onChange: any = () => {};
+  onTouched: any = () => {};
 
-  constructor(
-    private fb: FormBuilder,
-    private change: ChangeDetectorRef
-  ) {
-    this.filterForm = this.fb.group({
-      [this.formControlName]: ['']
-    });
+  writeValue(value: any): void {
+    this.value = value;
   }
 
-  ngOnInit() {
-    this.filterForm.get(this.formControlName)?.valueChanges.subscribe(() => {
-      this.change.markForCheck();
-    });
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState?(isDisabled: boolean): void {
+    // implement this method if necessary
+  }
+
+  handleChange(event: any) {
+    this.value = event.target.value;
+    this.onChange(this.value);
+    this.onTouched();
   }
 }

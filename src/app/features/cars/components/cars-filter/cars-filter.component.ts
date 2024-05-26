@@ -31,7 +31,6 @@ export class CarsFilterComponent implements OnInit {
 
   constructor(
     private filterBase: CarsFilterBaseComponent,
-    private carService: CarsControllerService,
     private fb: FormBuilder,
     private change: ChangeDetectorRef,
   ) {
