@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { AuthenticateRequestParams, AuthenticationRequest, AuthenticationService } from '../../shared/services/api';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TokenService } from '../../features/token/token.service';
+import { HomeLayoutComponent } from '../../shared/layouts/home-layout/home-layout.component';
 
 @Component({
   selector: 'app-login-page',
@@ -11,9 +12,11 @@ import { TokenService } from '../../features/token/token.service';
   imports: [
     CommonModule,
     FormsModule,
+    HomeLayoutComponent,
   ],
   templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss',
+  styleUrls: ['./login-page.component.scss'],
+  encapsulation: ViewEncapsulation.None, 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginPageComponent {
@@ -52,6 +55,6 @@ export class LoginPageComponent {
   }
 
   register() {
-    this.router.navigate(['cars']);
+    this.router.navigate(['register']);
   }
 }
