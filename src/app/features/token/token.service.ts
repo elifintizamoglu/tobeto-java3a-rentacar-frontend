@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {JwtHelperService} from '@auth0/angular-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +19,7 @@ export class TokenService {
     if (!token) {
       return false;
     }
-    // decode the token
     const jwtHelper = new JwtHelperService();
-    // check expiry date
     const isTokenExpired = jwtHelper.isTokenExpired(token);
     if (isTokenExpired) {
       localStorage.clear();
@@ -34,14 +32,35 @@ export class TokenService {
     return !this.isTokenValid();
   }
 
-  get userRoles(): string[] {
+  getUserRoles(): string[] {
     const token = this.token;
     if (token) {
       const jwtHelper = new JwtHelperService();
-      const decodedToken = jwtHelper.decodeToken(token);
-      console.log(decodedToken.authorities);
-      return decodedToken.authorities;
+      try {
+        const decodedToken = jwtHelper.decodeToken(token);
+        if (decodedToken && decodedToken.authorities) {
+          return decodedToken.authorities;
+        } else {
+          console.error('Token does not contain authorities.');
+          return [];
+        }
+      } catch (error) {
+        console.error('Error decoding token:', error);
+        return [];
+      }
     }
     return [];
+  }
+
+  isUser(): boolean {
+    if (this.getUserRoles().includes('USER'))
+      return true;
+    return false;
+  }
+
+  isAdmin(): boolean {
+    if (this.getUserRoles().includes('ADMIN'))
+      return true;
+    return false;
   }
 }

@@ -7,11 +7,12 @@ import { ManagementEditBrandPageComponent } from './management-brands-page/manag
 import { ManagementModelsPageComponent } from './management-models-page/management-models-page.component';
 import { ManagementCreateModelPageComponent } from './management-models-page/management-create-model-page/management-create-model-page.component';
 import { ManagementEditModelPageComponent } from './management-models-page/management-edit-model-page/management-edit-model-page.component';
+import { adminGuard } from '../../shared/guards/admin.guard';
 
 export const managementRoutes: Routes = [
     {
         path: 'management', // localhost:4200/management
-        canActivate: [authGuard],  // bu sayfanın açılabilmesi için true dönmesi lazım, management sayfalarına gidebilmek için buradan geçmesi lazım
+        canActivate: [adminGuard],  // bu sayfanın açılabilmesi için true dönmesi lazım, management sayfalarına gidebilmek için buradan geçmesi lazım
         data: {
             requiredRoles: ['admin'],
         },

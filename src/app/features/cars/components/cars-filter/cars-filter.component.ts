@@ -54,10 +54,12 @@ export class CarsFilterComponent implements OnInit {
         this.filterBase.getModelsByBrandId({ id: +id }).subscribe(models => {
           this.models = models;
           this.filterForm.get('model')?.setValue('');
+          this.change.detectChanges();
         });
       } else {
         this.models = [];
         this.filterForm.get('model')?.setValue('');
+        this.change.detectChanges();
       }
     });
   }
@@ -70,7 +72,7 @@ export class CarsFilterComponent implements OnInit {
   }
 
   resetFilters() {
-    this.filterForm.reset();  
+    this.filterForm.reset();
     this.getCars();
   }
 
@@ -85,6 +87,7 @@ export class CarsFilterComponent implements OnInit {
 
     this.filterBase.getCarsByFilters(requestParams).subscribe(cars => {
       this.cars = cars;
+      console.log(cars);
       this.carsFiltered.emit(cars);
       this.change.markForCheck();
     });
