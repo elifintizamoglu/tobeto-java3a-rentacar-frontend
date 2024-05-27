@@ -1,24 +1,32 @@
-<table appTable>
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (model of models; track $index){
-        <tr>
-            <th scope="row">{{model.id}}</th>
-            <td>{{model.name}}</td>
-            <td>
-                <div class="d-flex justify-content-end">
-                    <app-button [routerLink]="['/management/models/edit',model.id]" variant="warning">Edit</app-button>
-                    <app-button class="ms-3" (click)="deteteModel(model.id!)" variant="danger">Delete</app-button>
-                </div>
+<div class="m-3">
+    <table appTable>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Model Name</th>
+                <th scope="col">Brand Name</th>
+                <th scope="col">Fuel Name</th>
+                <th scope="col">Transmission Name</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let model of models; let i = index">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{model.name}}</td>
+                <td>{{model.brandName}}</td>
+                <td>{{model.fuelName}}</td>
+                <td>{{model.transmissionName}}</td>
+                <td>
+                    <div class="d-flex justify-content-end">
+                        <app-button [routerLink]="['/management/models/edit',model.id]"
+                            variant="warning">Edit</app-button>
+                        <app-button class="ms-3" (click)="deteteModel(model.id!)" variant="danger">Delete</app-button>
+                    </div>
 
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

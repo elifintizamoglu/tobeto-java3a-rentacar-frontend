@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } 
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { BrandsControllerService, GetBrandByIdResponse } from '../../../../shared/services/api';
-import { BrandListItemDto } from '../../models/brand-list-item-dto';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-brand-form',
@@ -20,14 +20,13 @@ export class EditBrandFormComponent implements OnInit {
   @Input() brandId!: number;
 
   form!: FormGroup;
-
-  formMessage: string | null = null;
   brand!: GetBrandByIdResponse;
 
   constructor(private fb: FormBuilder,
     private brandsService: BrandsControllerService,
     private change: ChangeDetectorRef,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -57,7 +56,7 @@ export class EditBrandFormComponent implements OnInit {
 
   onFormSubmit() {
     if (this.form.invalid) {
-      this.formMessage = 'Please fill the form correctly';
+      this.toastr.warning('Please fill the form correctly.');
       return;
     }
 
@@ -71,7 +70,7 @@ export class EditBrandFormComponent implements OnInit {
       },
     }).subscribe({
       complete: () => {
-        this.formMessage = 'Brand updated uccessfully';
+        this.toastr.success('Brand updated uccessfully');
         this.change.markForCheck();
 
         setTimeout(() => {

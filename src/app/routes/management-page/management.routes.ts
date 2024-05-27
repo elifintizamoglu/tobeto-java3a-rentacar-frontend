@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { ManagementPageComponent } from './management-page.component';
-import { authGuard } from '../../shared/guards/auth.guard';
 import { ManagementBrandsPageComponent } from './management-brands-page/management-brands-page.component';
 import { ManagementCreateBrandPageComponent } from './management-brands-page/management-create-brand-page/management-create-brand-page.component';
 import { ManagementEditBrandPageComponent } from './management-brands-page/management-edit-brand-page/management-edit-brand-page.component';
@@ -8,6 +7,7 @@ import { ManagementModelsPageComponent } from './management-models-page/manageme
 import { ManagementCreateModelPageComponent } from './management-models-page/management-create-model-page/management-create-model-page.component';
 import { ManagementEditModelPageComponent } from './management-models-page/management-edit-model-page/management-edit-model-page.component';
 import { adminGuard } from '../../shared/guards/admin.guard';
+import { AdminProfilePageComponent } from '../profile/admin-profile-page/admin-profile-page.component';
 
 export const managementRoutes: Routes = [
     {
@@ -16,7 +16,7 @@ export const managementRoutes: Routes = [
         data: {
             requiredRoles: ['admin'],
         },
-        component: ManagementPageComponent,
+        component: AdminProfilePageComponent,
         // ilk karşılaştığı <router-outlet>'e ManagementPageComponent'i yerleştiricek
         children: [ // yukarısı aktif olmazsa children da aktif olmaz
             {

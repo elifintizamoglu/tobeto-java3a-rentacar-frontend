@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { AddBrandRequestParams, BrandsControllerService } from '../../../../shared/services/api';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-brand-form',
@@ -20,16 +21,15 @@ import { Router } from '@angular/router';
 })
 export class AddBrandFormComponent implements OnInit {
 
-  //nameInput: string = '';
-  form!: FormGroup; // ! -> şu an bir değer atamayacağım sonra atayacağım
-  formMessage: string | null = null;
+  form!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
     private brandsService: BrandsControllerService,
     private change: ChangeDetectorRef,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
-  ngOnInit(): void { // component ilk yüklendiğinde form oluşturulacak
+  ngOnInit(): void {
     this.createForm();
   }
 
@@ -41,14 +41,13 @@ export class AddBrandFormComponent implements OnInit {
 
   onFormSubmit() {
     if (this.form.invalid) {
-      this.formMessage = 'Please fill all required fields.';
+      this.toastr.warning('Please fill the form correctly.');
       return;
     }
     this.add();
   }
 
   add() {
-
     const request: AddBrandRequestParams = {
       createBrandRequest: {
         name: this.form.value.name,
@@ -56,23 +55,17 @@ export class AddBrandFormComponent implements OnInit {
     }
     this.brandsService.addBrand(request).subscribe({
       next: (response) => {
-        // Next: Observable'dan gelen veri yakaladığımız fonksiyon
-        console.log("a");
-        console.log(response);
       },
       error: (error) => {
-        // Error: Observable'dan gelen hata yakaladığımız fonksiyon
-        this.formMessage = error.error.message;
-        this.change.markForCheck();// OnPush olduğu için bir sonraki bir olaya kadar değişikliği algılamaz. Böylece biz manuel olarak değişikliği algılamasını sağlıyoruz.
+        this.change.markForCheck();
       },
       complete: () => {
-        // Complete: Observable'dan gelen veri akışının tamamlandığını bildiren fonksiyon. Complete çalıştığı taktirde observable'dan gelen veri akışı sona erer.
-        this.formMessage = 'Brand added successfully';
+        this.toastr.success('Brand added successfully');
         this.form.reset();
         this.change.markForCheck();
         setTimeout(() => {
           this.router.navigate(['/management/brands']);
-        }, 2000);
+        }, 1500);
       },
     });
   }

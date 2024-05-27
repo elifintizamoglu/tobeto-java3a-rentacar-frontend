@@ -25,7 +25,8 @@
         </ng-container>
       </div>
       <div *ngIf="tokenService.isLoggedIn()">
-        <app-button class="me-3" [routerLink]="['/user']"> <i class="fas fa-user"></i></app-button>
+        <app-button class="me-3" (click)="navigateToProfile()" [routerLink]="['/management']"><i
+            class="fas fa-user"></i></app-button>
         <app-button (click)="tokenService.logout()">Log Out</app-button>
       </div>
 
