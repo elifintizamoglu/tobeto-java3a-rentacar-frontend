@@ -2,18 +2,16 @@
   <div class="container-fluid">
     <a *ngIf="title" class="navbar-brand text-color title" [routerLink]="title.routerLink">{{title.text}}</a>
     <app-button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" variant="light">
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" variant="light">
       <span class="navbar-toggler-icon"></span>
     </app-button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item text-color" *ngFor="let navItem of navItems">
-          <!-- Angular içerisinde yönlendirme yapacaksak routerLink kullanamız gerekiyor -->
-          <!-- routerLinkActive ilgili route aktif olduğunda verilen classı ekler -->
-
           <a *ngIf="!isUrl(navItem.link); else urlLink" class="nav-link text-color" aria-current="page"
-            [routerLink]="!isUrl(navItem.link) ? navItem.link : null" routerLinkActive="active-link">{{ navItem.label }}</a>
+            [routerLink]="!isUrl(navItem.link) ? navItem.link : null" routerLinkActive="active-link">{{ navItem.label
+            }}</a>
 
           <ng-template #urlLink>
             <a class="nav-link" aria-current="page" [href]="navItem.link">{{ navItem.label }}</a>
@@ -21,10 +19,15 @@
         </li>
       </ul>
 
-      <ng-container *ngIf="endContentTemplate">
-        <ng-container *ngTemplateOutlet="endContentTemplate"></ng-container>
-      </ng-container>
-    
+      <div *ngIf="!tokenService.isLoggedIn()">
+        <ng-container *ngIf="endContentTemplate">
+          <ng-container *ngTemplateOutlet="endContentTemplate"></ng-container>
+        </ng-container>
+      </div>
+      <div *ngIf="tokenService.isLoggedIn()">
+        <app-button class="me-3" [routerLink]="['/user']"> <i class="fas fa-user"></i></app-button>
+        <app-button (click)="tokenService.logout()">Log Out</app-button>
+      </div>
 
     </div>
   </div>

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -6,12 +7,23 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class TokenService {
 
+  constructor(private router: Router) { }
+
   set token(token: string) {
     localStorage.setItem('token', token);
   }
 
   get token(): string {
     return localStorage.getItem('token') as string;
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 
   isTokenValid(): boolean {
@@ -26,10 +38,6 @@ export class TokenService {
       return false;
     }
     return true;
-  }
-
-  isTokenNotValid(): boolean {
-    return !this.isTokenValid();
   }
 
   getUserRoles(): string[] {
