@@ -18,11 +18,12 @@ import { BrandsControllerService } from '../../../../shared/services/api';
 })
 export class BrandsListTableComponent extends BrandsListBaseComponent {
 
-  constructor(brandsService: BrandsControllerService, change: ChangeDetectorRef) {
+  constructor(brandsService: BrandsControllerService,
+    change: ChangeDetectorRef) {
     super(brandsService, change);
   }
 
-  deteteBrand(id: number) {
+  deleteBrand(id: number) {
     this.brandsService.deleteBrandById({ id: id }).subscribe({
       complete: () => {
         this.getBrandsList();

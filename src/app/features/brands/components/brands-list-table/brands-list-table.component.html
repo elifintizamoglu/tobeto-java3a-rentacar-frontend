@@ -15,11 +15,10 @@
                     <div class="d-flex justify-content-end">
                         <app-button [routerLink]="['/management/brands/edit',brand.id]"
                             variant="warning">Edit</app-button>
-                        <app-button class="ms-3" (click)="deteteBrand(brand.id!)" variant="danger">Delete</app-button>
+                        <app-button class="ms-3" (click)="deleteBrand(brand.id!)" variant="danger">Delete</app-button>
                     </div>
                 </td>
             </tr>
-            
         </tbody>
     </table>
 </div>

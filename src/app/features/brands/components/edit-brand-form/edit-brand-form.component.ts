@@ -69,14 +69,21 @@ export class EditBrandFormComponent implements OnInit {
         name: this.form.value.name,
       },
     }).subscribe({
-      complete: () => {
+      next:(response) => {
         this.toastr.success('Brand updated uccessfully');
         this.change.markForCheck();
-
         setTimeout(() => {
           this.router.navigate(['/management/brands']);
         }, 2000);
       },
+      error: (error) => {
+        if (error.error && error.error.detail) {
+          this.toastr.error(error.error.detail);
+        } else {
+          this.toastr.error('An unexpected error occurred. Please try again.');
+        }
+        this.change.markForCheck();
+      }
     });
   }
 

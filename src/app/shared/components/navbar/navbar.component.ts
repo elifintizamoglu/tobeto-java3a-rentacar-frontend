@@ -40,7 +40,7 @@ export class NavbarComponent {
 
   navigateToProfile() {
     if (this.tokenService.isAdmin()) {
-      this.router.navigate(['/management']);
+      this.router.navigate(['/management/brands']);
     } else {
       this.router.navigate(['/user']);
     }

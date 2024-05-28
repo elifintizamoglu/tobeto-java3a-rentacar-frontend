@@ -55,11 +55,6 @@ export class AddBrandFormComponent implements OnInit {
     }
     this.brandsService.addBrand(request).subscribe({
       next: (response) => {
-      },
-      error: (error) => {
-        this.change.markForCheck();
-      },
-      complete: () => {
         this.toastr.success('Brand added successfully');
         this.form.reset();
         this.change.markForCheck();
@@ -67,6 +62,14 @@ export class AddBrandFormComponent implements OnInit {
           this.router.navigate(['/management/brands']);
         }, 1500);
       },
+      error: (error) => {
+        if (error.error && error.error.detail) {
+          this.toastr.error(error.error.detail);
+        } else {
+          this.toastr.error('An unexpected error occurred. Please try again.');
+        }
+        this.change.markForCheck();
+      }
     });
   }
 }
