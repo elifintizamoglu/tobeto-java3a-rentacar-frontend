@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+
+.car-container {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.car-box {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border: 2px solid #000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+.car-image {
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+}
+.car-details {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

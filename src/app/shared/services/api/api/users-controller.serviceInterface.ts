@@ -16,6 +16,7 @@ import { Observable }                                        from 'rxjs';
 import { CreateUserRequest } from '../model/models';
 import { CreateUserResponse } from '../model/models';
 import { GetAllUserResponse } from '../model/models';
+import { GetUserByEmailResponse } from '../model/models';
 import { GetUserByIdResponse } from '../model/models';
 import { ResourceNotFoundDetails } from '../model/models';
 import { UpdateUserById400Response } from '../model/models';
@@ -32,6 +33,10 @@ export interface AddUserRequestParams {
 
 export interface DeleteUserByIdRequestParams {
     id: number;
+}
+
+export interface GetUserByEmailRequestParams {
+    email: string;
 }
 
 export interface GetUserByIdRequestParams {
@@ -67,6 +72,13 @@ export interface UsersControllerServiceInterface {
      * 
 */
     getAllUsers(extraHttpRequestParams?: any): Observable<Array<GetAllUserResponse>>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    getUserByEmail(requestParameters: GetUserByEmailRequestParams, extraHttpRequestParams?: any): Observable<GetUserByEmailResponse>;
 
     /**
      * 

@@ -30,6 +30,7 @@ export * from './get-model-by-id-response';
 export * from './get-models-by-brand-id-response';
 export * from './get-rental-by-id-response';
 export * from './get-transmission-by-id-response';
+export * from './get-user-by-email-response';
 export * from './get-user-by-id-response';
 export * from './registration-request';
 export * from './resource-not-found-details';

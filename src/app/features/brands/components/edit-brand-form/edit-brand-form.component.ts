@@ -34,13 +34,9 @@ export class EditBrandFormComponent implements OnInit {
   }
 
   getBrand() {
-    this.brandsService.getBrandById({ id: this.brandId }).subscribe(async (brand) => {
-      if (brand instanceof Blob) {
-        const text = await brand.text();
-        this.brand = JSON.parse(text);
-      } else {
-        this.brand = brand;
-      }
+    this.brandsService.getBrandById({ id: this.brandId }).subscribe(brand => {
+
+      this.brand = brand;
 
       this.form.patchValue({
         name: this.brand.name,
@@ -69,7 +65,7 @@ export class EditBrandFormComponent implements OnInit {
         name: this.form.value.name,
       },
     }).subscribe({
-      next:(response) => {
+      next: (response) => {
         this.toastr.success('Brand updated uccessfully');
         this.change.markForCheck();
         setTimeout(() => {

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injectable } from '@angular/core';
-import { BrandsControllerService, CarsControllerService, FuelsControllerService, GetAllBrandResponse, GetAllCarResponse, GetAllFuelResponse, GetAllTransmissionResponse, GetCarsByFiltersRequestParams, GetCarsByFiltersResponse, GetModelsByBrandIdRequestParams, GetModelsByBrandIdResponse, ModelsControllerService, TransmissionsControllerService } from '../../../../shared/services/api';
+import { BrandsControllerService, CarsControllerService, FuelsControllerService, GetAllBrandResponse, GetAllCarResponse, GetAllFuelResponse, GetAllTransmissionResponse, GetCarByIdRequestParams, GetCarByIdResponse, GetCarsByFiltersRequestParams, GetCarsByFiltersResponse, GetModelsByBrandIdRequestParams, GetModelsByBrandIdResponse, ModelsControllerService, TransmissionsControllerService } from '../../../../shared/services/api';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -45,5 +45,4 @@ export class CarsFilterBaseComponent {
   getCarsByFilters(params: GetCarsByFiltersRequestParams): Observable<GetCarsByFiltersResponse[]> {
     return this.carService.getCarsByFilters(params);
   }
-
 }

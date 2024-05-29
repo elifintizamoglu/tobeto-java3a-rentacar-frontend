@@ -98,7 +98,6 @@ export class CarsFilterComponent implements OnInit {
 
     this.filterBase.getCarsByFilters(requestParams).subscribe(cars => {
       this.cars = cars;
-      console.log(cars);
       this.carsFiltered.emit(cars);
       this.change.markForCheck();
     });

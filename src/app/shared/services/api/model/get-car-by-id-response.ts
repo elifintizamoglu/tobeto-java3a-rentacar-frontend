@@ -19,6 +19,8 @@ export interface GetCarByIdResponse {
     dailyPrice?: number;
     modelId?: number;
     modelName?: string;
+    fuelName?: string;
+    transmissionName?: string;
 }
 export namespace GetCarByIdResponse {
     export type StateEnum = 'AVAILABLE' | 'RENTED' | 'MAINTENANCE' | 'OUT_OF_SERVICE';

@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { ManagementPageComponent } from './management-page.component';
 import { ManagementBrandsPageComponent } from './management-brands-page/management-brands-page.component';
 import { ManagementCreateBrandPageComponent } from './management-brands-page/management-create-brand-page/management-create-brand-page.component';
 import { ManagementEditBrandPageComponent } from './management-brands-page/management-edit-brand-page/management-edit-brand-page.component';

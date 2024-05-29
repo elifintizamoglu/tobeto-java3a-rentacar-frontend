@@ -33,10 +33,7 @@ export class CarsCardListComponent {
     return car.id;
   }
 
-  onRentButtonClick() {
-    this.toastr.warning('You must be logged in to rent a car.');
-    setTimeout(() => {
-      this.router.navigate(['/login']);
-    }, 1500);
+  onRentButtonClick(carId: number) {
+    this.router.navigate(['/car/detail', carId]);
   }
 }

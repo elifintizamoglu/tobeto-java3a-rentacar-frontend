@@ -54,6 +54,7 @@ model/get-model-by-id-response.ts
 model/get-models-by-brand-id-response.ts
 model/get-rental-by-id-response.ts
 model/get-transmission-by-id-response.ts
+model/get-user-by-email-response.ts
 model/get-user-by-id-response.ts
 model/models.ts
 model/registration-request.ts

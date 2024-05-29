@@ -7,8 +7,8 @@
         [title]="car.brandName + ' ' + car.modelName"
         [text]="'Year: ' + car.modelYear + ', Plate: ' + car.plate + ', Daily Price: ' + car.dailyPrice + ', Fuel: ' + car.fuelName + ', Transmission: ' + car.transmissionName"
         [imageSrc]="'https://cdn.cetas.com.tr/Delivery/Public/Image/-1x-1/HANGI_ARABA_HANGI_ULKE_02_sp5zy3n1im.jpg'"
-        buttonLabel="Rent"
-        (buttonClick)="onRentButtonClick()"
+        buttonLabel="See Details"
+        (buttonClick)="onRentButtonClick(car.id!)"
       ></app-card>
     </div>
   </div>

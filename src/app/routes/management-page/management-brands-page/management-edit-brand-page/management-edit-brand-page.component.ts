@@ -26,9 +26,7 @@ export class ManagementEditBrandPageComponent implements OnInit {
     this.route.params.subscribe((params) => {
       const brandId = params['brandId'];
       if (!brandId) return;
-
       this.brandId = Number(brandId);
-
     });
   }
 }
