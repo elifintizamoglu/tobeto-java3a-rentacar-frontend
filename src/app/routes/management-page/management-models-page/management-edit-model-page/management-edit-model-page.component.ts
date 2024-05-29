@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { EditModelFormComponent } from '../../../../features/models/components/edit-model-form/edit-model-form.component';
 
 @Component({
   selector: 'app-management-edit-model-page',
   standalone: true,
   imports: [
-    CommonModule, EditModelFormComponent,
+    CommonModule, EditModelFormComponent, RouterModule,
   ],
   templateUrl: './management-edit-model-page.component.html',
   styleUrl: './management-edit-model-page.component.scss',

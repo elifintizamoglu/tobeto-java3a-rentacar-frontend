@@ -1,4 +1,3 @@
-// src/app/shared/interceptor/http-token.interceptor.ts
 import { HttpRequest, HttpHandlerFn, HttpEvent, HttpInterceptorFn, HttpHeaders } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -16,6 +15,5 @@ export const HttpTokenInterceptor: HttpInterceptorFn = (request: HttpRequest<unk
     });
     return next(authReq);
   }
-
   return next(request);
 };

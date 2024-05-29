@@ -1,2 +1,9 @@
-<h1>Edit Model</h1>
-<app-edit-model-form [modelId]="modelId"></app-edit-model-form>
+<div class="m-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>Edit Model</h3>
+        <button type="button" class="btn btn-secondary" [routerLink]="['/management/models']">
+            <i class="fas fa-arrow-left"></i> Back
+        </button>
+    </div>
+    <app-edit-model-form [modelId]="modelId"></app-edit-model-form>
+</div>

@@ -15,7 +15,10 @@ export interface GetModelByIdResponse {
     id?: number;
     name?: string;
     brandId?: number;
+    brandName?: string;
     fuelId?: number;
+    fuelName?: string;
     transmissionId?: number;
+    transmissionName?: string;
 }
 
