@@ -72,9 +72,20 @@ export class CarsFilterComponent implements OnInit {
   }
 
   resetFilters() {
-    this.filterForm.reset();
+    this.filterForm.reset({
+      brand: null,
+      model: null,
+      fuel: null,
+      transmission: null
+    });
+  
+    this.models = [];
     this.getCars();
+    this.change.markForCheck();
   }
+  
+  
+  
 
   searchCars() {
     const { brand, model, fuel, transmission } = this.filterForm.value;

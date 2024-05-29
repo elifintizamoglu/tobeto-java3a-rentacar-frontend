@@ -35,6 +35,7 @@ export class SelectBoxComponent implements ControlValueAccessor {
 
   writeValue(value: any): void {
     this.value = value;
+    this.changeDetectorRef.markForCheck();
   }
 
   registerOnChange(fn: any): void {
@@ -54,4 +55,6 @@ export class SelectBoxComponent implements ControlValueAccessor {
     this.onChange(this.value);
     this.onTouched();
   }
+
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 }

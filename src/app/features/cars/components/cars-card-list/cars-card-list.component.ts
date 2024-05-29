@@ -4,6 +4,7 @@ import { GetCarsByFiltersResponse } from '../../../../shared/services/api';
 import { CardComponent } from '../../../../shared/components/card/card.component';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-cars-card-list',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule,
     CardComponent,
+    NgxPaginationModule,
   ],
   templateUrl: './cars-card-list.component.html',
   styleUrl: './cars-card-list.component.scss',
@@ -19,6 +21,9 @@ import { Router } from '@angular/router';
 export class CarsCardListComponent {
 
   @Input() cars: GetCarsByFiltersResponse[] = [];
+  page: number = 1;  // Başlangıç sayfa numarası
+  itemsPerPage: number = 4;  // Sayfa başına gösterilecek öğe sayısı
+
 
   https: string | undefined;
 
