@@ -1,27 +1,26 @@
 <app-home-layout>
-    <div class="container-fluid car-container" *ngIf="car">
-      <div class="car-box">
-        <img [src]="'https://cdn.cetas.com.tr/Delivery/Public/Image/-1x-1/HANGI_ARABA_HANGI_ULKE_02_sp5zy3n1im.jpg'" alt="Car Image" class="car-image">
-        <div class="car-details">
-          <!-- <h3>{{ car.brandName }} {{ car.modelName }}</h3> -->
-          <p><strong>Year:</strong> {{ car.modelYear }}</p>
-          <p><strong>Plate:</strong> {{ car.plate }}</p>
-          <p><strong>Daily Price:</strong> {{ car.dailyPrice }}</p>
-          <p><strong>Fuel:</strong> {{ car.fuelName }}</p>
-          <p><strong>Transmission:</strong> {{ car.transmissionName }}</p>
-          <form [formGroup]="dateForm">
-            Start Date: <input type="date" [min]="minDate" formControlName="startDate">
-            <br>
-            End Date: <input type="date" [min]="minDate" formControlName="endDate">
-          </form>
-          
-          <app-button (click)="rentCar($event)">Rent</app-button>
-        </div>
+  <div class="container-fluid car-container" *ngIf="car">
+    <div class="car-box">
+      <img [src]="'https://cdn.cetas.com.tr/Delivery/Public/Image/-1x-1/HANGI_ARABA_HANGI_ULKE_02_sp5zy3n1im.jpg'" alt="Car Image" class="car-image">
+      <div class="car-details">
+        <h3>{{ car.brandName }} {{ car.modelName }}</h3>
+        <p><strong>Year:</strong> {{ car.modelYear }}</p>
+        <p><strong>Plate:</strong> {{ car.plate }}</p>
+        <p><strong>Daily Price:</strong> {{ car.dailyPrice }}</p>
+        <p><strong>Fuel:</strong> {{ car.fuelName }}</p>
+        <p><strong>Transmission:</strong> {{ car.transmissionName }}</p>
+        <form [formGroup]="dateForm" (ngSubmit)="rentCar($event)">
+          Start Date: <input type="date" [min]="minDate" formControlName="startDate">
+          <br>
+          End Date: <input type="date" [min]="minDate" formControlName="endDate">
+          <button type="submit">Rent</button>
+        </form>
+        
       </div>
     </div>
-  
-    <div class="alert alert-warning" role="alert" *ngIf="!car">
-      Car details not available.
-    </div>
-  </app-home-layout>
-  
+  </div>
+
+  <div class="alert alert-warning" role="alert" *ngIf="!car">
+    Car details not available.
+  </div>
+</app-home-layout>

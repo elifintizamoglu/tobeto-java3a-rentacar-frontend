@@ -5,6 +5,7 @@ import { TableDirective } from '../../../../shared/directives/table.directive';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { RouterModule } from '@angular/router';
 import { BrandsControllerService } from '../../../../shared/services/api';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-brands-list-table',
@@ -18,16 +19,32 @@ import { BrandsControllerService } from '../../../../shared/services/api';
 })
 export class BrandsListTableComponent extends BrandsListBaseComponent {
 
-  constructor(brandsService: BrandsControllerService,
+  deletingBrandId: number | null = null;
+
+  constructor(brandsService: BrandsControllerService, private toastr: ToastrService,
     change: ChangeDetectorRef) {
     super(brandsService, change);
   }
 
   deleteBrand(id: number) {
+
+    if (this.deletingBrandId !== null) return;
+    this.deletingBrandId = id;
+
     this.brandsService.deleteBrandById({ id: id }).subscribe({
       complete: () => {
+        this.toastr.success('Brand deleted succesfully.');
         this.getBrandsList();
+        this.deletingBrandId = null;
       },
+      error: (error) => {
+        this.deletingBrandId = null;
+        if (error.error && error.error.detail) {
+          this.toastr.error(error.error.detail);
+        } else {
+          this.toastr.error('An unexpected error occurred. Please try again.');
+        }
+      }
     });
   }
 }

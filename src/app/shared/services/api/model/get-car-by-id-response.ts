@@ -19,6 +19,7 @@ export interface GetCarByIdResponse {
     dailyPrice?: number;
     modelId?: number;
     modelName?: string;
+    brandName?: string;
     fuelName?: string;
     transmissionName?: string;
 }

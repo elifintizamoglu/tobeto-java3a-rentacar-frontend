@@ -93,7 +93,15 @@ export class CarDetailComponent implements OnInit {
   rentCar(event: Event) {
     event.preventDefault();
     if (!this.email) {
-      this.toastr.warning('You must log in to rent a car.');
+      this.toastr.warning('You must login to rent a car.');
+      return;
+    }
+
+    const startDate = this.dateForm.value.startDate;
+    const endDate = this.dateForm.value.endDate;
+
+    if (!startDate || !endDate) {
+      this.toastr.warning('Please select both start and end dates.');
       return;
     }
 
@@ -109,6 +117,7 @@ export class CarDetailComponent implements OnInit {
     this.rentalService.addRental(requestParams).subscribe({
       next: (response) => {
         this.toastr.success('Car rented uccessfully.');
+        this.toastr.info('Total price is: ' + response.totalPrice + ' TL');
         this.change.markForCheck();
         setTimeout(() => {
           this.router.navigate(['/cars']);
