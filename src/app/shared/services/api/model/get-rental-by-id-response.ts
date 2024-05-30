@@ -13,7 +13,11 @@
 
 export interface GetRentalByIdResponse { 
     id?: number;
+    carId?: number;
     carPlate?: string;
+    brandName?: string;
+    modelName?: string;
+    userId?: number;
     userFirstName?: string;
     userLastName?: string;
     startDate?: string;

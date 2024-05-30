@@ -11,7 +11,10 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-brands-list-table',
   standalone: true,
   imports: [
-    CommonModule, TableDirective, ButtonComponent, RouterModule,
+    CommonModule, 
+    TableDirective, 
+    ButtonComponent, 
+    RouterModule,
   ],
   templateUrl: './brands-list-table.component.html',
   styleUrl: './brands-list-table.component.scss',

@@ -1,0 +1,34 @@
+<div class="m-3">
+    <table appTable>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Brand - Model</th>
+                <th scope="col">Car Plate</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Renter</th>
+                <th scope="col">Total Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rental of rentals; let i = index">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{rental.brandName}} {{rental.modelName}}</td>
+                <td>{{rental.carPlate}}</td>
+                <td>{{rental.startDate}}</td>
+                <td>{{rental.endDate}}</td>
+                <td>{{rental.userFirstName}} {{rental.userLastName}}</td>
+                <td>{{rental.totalPrice}}</td>
+                <td>
+                    <div class="d-flex justify-content-end">
+                        <app-button [routerLink]="['/management/rentals/edit',rental.id]"
+                            variant="warning">Edit</app-button>
+                        <app-button class="ms-3" (click)="deleteRental(rental.id!)" variant="danger">Delete</app-button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

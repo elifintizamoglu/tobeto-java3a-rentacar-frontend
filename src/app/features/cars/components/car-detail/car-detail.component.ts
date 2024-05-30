@@ -116,7 +116,7 @@ export class CarDetailComponent implements OnInit {
 
     this.rentalService.addRental(requestParams).subscribe({
       next: (response) => {
-        this.toastr.success('Car rented uccessfully.');
+        this.toastr.success('Car rented successfully.');
         this.toastr.info('Total price is: ' + response.totalPrice + ' TL');
         this.change.markForCheck();
         setTimeout(() => {

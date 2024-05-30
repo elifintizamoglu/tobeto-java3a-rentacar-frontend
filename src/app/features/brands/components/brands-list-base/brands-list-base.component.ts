@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { GetAllBrandResponse, BrandsControllerService } from '../../../../shared/services/api';
 
 @Component({

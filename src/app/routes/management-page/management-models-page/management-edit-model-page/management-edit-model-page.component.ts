@@ -7,7 +7,9 @@ import { EditModelFormComponent } from '../../../../features/models/components/e
   selector: 'app-management-edit-model-page',
   standalone: true,
   imports: [
-    CommonModule, EditModelFormComponent, RouterModule,
+    CommonModule, 
+    EditModelFormComponent, 
+    RouterModule,
   ],
   templateUrl: './management-edit-model-page.component.html',
   styleUrl: './management-edit-model-page.component.scss',

@@ -7,6 +7,8 @@ import { ManagementCreateModelPageComponent } from './management-models-page/man
 import { ManagementEditModelPageComponent } from './management-models-page/management-edit-model-page/management-edit-model-page.component';
 import { adminGuard } from '../../shared/guards/admin.guard';
 import { AdminProfilePageComponent } from '../profile/admin-profile-page/admin-profile-page.component';
+import { ManagementRentalsPageComponent } from './management-rentals-page/management-rentals-page.component';
+import { ManagementEditRentalPageComponent } from './management-rentals-page/management-edit-rental-page/management-edit-rental-page.component';
 
 export const managementRoutes: Routes = [
     {
@@ -45,6 +47,15 @@ export const managementRoutes: Routes = [
             {
                 path: 'models/edit/:modelId', // localhost:4200/management/models/edit/1
                 component: ManagementEditModelPageComponent,
+            },
+
+            {
+                path: 'rentals',
+                component: ManagementRentalsPageComponent,
+            },
+            {
+                path: 'rentals/edit/:rentalId',
+                component: ManagementEditRentalPageComponent,
             },
         ],
     },

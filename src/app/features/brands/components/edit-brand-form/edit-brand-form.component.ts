@@ -10,7 +10,9 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-edit-brand-form',
   standalone: true,
   imports: [
-    CommonModule, ReactiveFormsModule, ButtonComponent,
+    CommonModule, 
+    ReactiveFormsModule, 
+    ButtonComponent,
   ],
   templateUrl: './edit-brand-form.component.html',
   styleUrl: './edit-brand-form.component.scss',
