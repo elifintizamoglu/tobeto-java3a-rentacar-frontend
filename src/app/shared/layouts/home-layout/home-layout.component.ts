@@ -8,8 +8,8 @@ import { RouterModule } from '@angular/router';
   selector: 'app-home-layout',
   standalone: true,
   imports: [
-    NavbarComponent, 
-    FooterComponent, 
+    NavbarComponent,
+    FooterComponent,
     ButtonComponent,
     RouterModule,
   ],
@@ -21,7 +21,6 @@ export class HomeLayoutComponent {
   navTitle: NavTitle = { text: 'Rent A Car', routerLink: '/' };
 
   navItems: NavItem[] = [
-    { label: 'Home', link: '/' },
     { label: 'Cars', link: '/cars' },
   ];
 
