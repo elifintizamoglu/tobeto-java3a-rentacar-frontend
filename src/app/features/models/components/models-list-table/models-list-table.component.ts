@@ -6,12 +6,17 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 import { RouterModule } from '@angular/router';
 import { ModelsControllerService } from '../../../../shared/services/api';
 import { ToastrService } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-models-list-table',
   standalone: true,
   imports: [
-    CommonModule, TableDirective, ButtonComponent, RouterModule,
+    CommonModule, 
+    TableDirective, 
+    ButtonComponent, 
+    RouterModule,  
+    NgxPaginationModule,
   ],
   templateUrl: './models-list-table.component.html',
   styleUrl: './models-list-table.component.scss',
@@ -20,6 +25,9 @@ import { ToastrService } from 'ngx-toastr';
 export class ModelsListTableComponent extends ModelsListBaseComponent {
 
   deletingModelId: number | null = null;
+
+  page: number = 1;
+  itemsPerPage: number = 6;
 
   constructor(private modelsControllerService: ModelsControllerService, change: ChangeDetectorRef, private toastr: ToastrService) {
     super(modelsControllerService, change);

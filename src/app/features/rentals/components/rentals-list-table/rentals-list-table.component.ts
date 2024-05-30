@@ -6,6 +6,7 @@ import { TableDirective } from '../../../../shared/directives/table.directive';
 import { RentalsListBaseComponent } from '../rentals-list-base/rentals-list-base.component';
 import { RentalsControllerService } from '../../../../shared/services/api';
 import { ToastrService } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-rentals-list-table',
@@ -15,13 +16,17 @@ import { ToastrService } from 'ngx-toastr';
     TableDirective, 
     ButtonComponent, 
     RouterModule,
+    NgxPaginationModule,
   ],
   templateUrl: './rentals-list-table.component.html',
   styleUrl: './rentals-list-table.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RentalsListTableComponent extends RentalsListBaseComponent{
+  
   deletingRentalId: number | null = null;
+  page: number = 1;
+  itemsPerPage: number = 6;
 
   constructor(rentalsService: RentalsControllerService,
      private toastr: ToastrService,

@@ -6,6 +6,7 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 import { RouterModule } from '@angular/router';
 import { BrandsControllerService } from '../../../../shared/services/api';
 import { ToastrService } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-brands-list-table',
@@ -15,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
     TableDirective, 
     ButtonComponent, 
     RouterModule,
+    NgxPaginationModule,
   ],
   templateUrl: './brands-list-table.component.html',
   styleUrl: './brands-list-table.component.scss',
@@ -23,6 +25,9 @@ import { ToastrService } from 'ngx-toastr';
 export class BrandsListTableComponent extends BrandsListBaseComponent {
 
   deletingBrandId: number | null = null;
+
+  page: number = 1;
+  itemsPerPage: number = 6;
 
   constructor(brandsService: BrandsControllerService, private toastr: ToastrService,
     change: ChangeDetectorRef) {

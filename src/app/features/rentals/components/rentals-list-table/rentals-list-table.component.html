@@ -13,7 +13,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let rental of rentals; let i = index">
+            <tr
+                *ngFor="let rental of rentals | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
                 <th scope="row">{{i + 1}}</th>
                 <td>{{rental.brandName}} {{rental.modelName}}</td>
                 <td>{{rental.carPlate}}</td>
@@ -31,4 +32,9 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="pagination-container">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+
 </div>

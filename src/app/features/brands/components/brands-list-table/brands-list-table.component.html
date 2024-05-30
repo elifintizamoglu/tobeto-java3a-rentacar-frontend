@@ -8,7 +8,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let brand of brands; let i = index">
+            <tr
+                *ngFor="let brand of brands | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
                 <th scope="row">{{i + 1}}</th>
                 <td>{{brand.name}}</td>
                 <td>
@@ -21,4 +22,7 @@
             </tr>
         </tbody>
     </table>
+    <div class="pagination-container">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
 </div>
