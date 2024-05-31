@@ -4,6 +4,7 @@ import { AuthenticationService, RegisterRequestParams, RegistrationRequest } fro
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HomeLayoutComponent } from '../../shared/layouts/home-layout/home-layout.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register-page',
@@ -25,7 +26,8 @@ export class RegisterPageComponent {
 
   constructor(
     private router: Router,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private toastr: ToastrService,
   ) {
   }
 
@@ -37,6 +39,7 @@ export class RegisterPageComponent {
     this.errorMsg = [];
     this.authService.register(this.registerRequest).subscribe({
       next: () => {
+        this.toastr.success('Your account has been created successfully.');
         this.router.navigate(['login']);
       },
       error: (err) => {

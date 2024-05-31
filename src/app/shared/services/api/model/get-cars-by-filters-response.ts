@@ -17,6 +17,7 @@ export interface GetCarsByFiltersResponse {
     plate?: string;
     state?: GetCarsByFiltersResponse.StateEnum;
     dailyPrice?: number;
+    imagePath?: string;
     brandName?: string;
     modelName?: string;
     fuelName?: string;

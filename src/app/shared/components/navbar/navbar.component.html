@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg bg-dark">
-  <div class="container-fluid">
+  <div class="container-fluid px-3">
     <a *ngIf="title" class="navbar-brand text-color title" [routerLink]="title.routerLink">{{title.text}}</a>
     <app-button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" variant="light">
       <span class="navbar-toggler-icon"></span>
     </app-button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-1">
 
         <li class="nav-item text-color" *ngFor="let navItem of navItems">
           <a *ngIf="!isUrl(navItem.link); else urlLink" class="nav-link text-color" aria-current="page"
@@ -19,17 +19,17 @@
         </li>
       </ul>
 
-      <div *ngIf="!tokenService.isLoggedIn()">
-        <ng-container *ngIf="endContentTemplate">
-          <ng-container *ngTemplateOutlet="endContentTemplate"></ng-container>
-        </ng-container>
+      <div class="d-flex align-items-center me-3">
+        <div *ngIf="!tokenService.isLoggedIn()">
+          <ng-container *ngIf="endContentTemplate">
+            <ng-container *ngTemplateOutlet="endContentTemplate"></ng-container>
+          </ng-container>
+        </div>
+        <div *ngIf="tokenService.isLoggedIn()">
+          <app-button class="me-3" (click)="navigateToProfile()"><i class="fas fa-user"></i></app-button>
+          <app-button (click)="tokenService.logout()">Log Out</app-button>
+        </div>
       </div>
-      <div *ngIf="tokenService.isLoggedIn()">
-        <app-button class="me-3" (click)="navigateToProfile()"><i
-            class="fas fa-user"></i></app-button>
-        <app-button (click)="tokenService.logout()">Log Out</app-button>
-      </div>
-
     </div>
   </div>
 </nav>

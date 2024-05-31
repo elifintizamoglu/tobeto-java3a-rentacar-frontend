@@ -17,6 +17,7 @@ export interface GetCarByIdResponse {
     plate?: string;
     state?: GetCarByIdResponse.StateEnum;
     dailyPrice?: number;
+    imagePath?: string;
     modelId?: number;
     modelName?: string;
     brandName?: string;
