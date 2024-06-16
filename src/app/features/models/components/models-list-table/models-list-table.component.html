@@ -13,7 +13,7 @@
         <tbody>
             <tr
                 *ngFor="let model of models | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
-                <th scope="row">{{i + 1}}</th>
+                <th scope="row">{{ (page - 1) * itemsPerPage + i + 1}}</th>
                 <td>{{model.name}}</td>
                 <td>{{model.brandName}}</td>
                 <td>{{model.fuelName}}</td>

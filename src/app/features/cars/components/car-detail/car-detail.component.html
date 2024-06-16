@@ -1,19 +1,21 @@
 <app-home-layout>
-  <div class="container-fluid car-container" *ngIf="car">
+  <div class="car-container" *ngIf="car">
     <div class="car-box">
       <img [src]="'https://cdn.cetas.com.tr/Delivery/Public/Image/-1x-1/HANGI_ARABA_HANGI_ULKE_02_sp5zy3n1im.jpg'" alt="Car Image" class="car-image">
       <div class="car-details">
         <h3>{{ car.brandName }} {{ car.modelName }}</h3>
         <p><strong>Year:</strong> {{ car.modelYear }}</p>
-        <p><strong>Plate:</strong> {{ car.plate }}</p>
-        <p><strong>Daily Price:</strong> {{ car.dailyPrice }}</p>
+        <p><strong>Daily Price:</strong> {{ car.dailyPrice }} TL</p>
         <p><strong>Fuel:</strong> {{ car.fuelName }}</p>
         <p><strong>Transmission:</strong> {{ car.transmissionName }}</p>
         <form [formGroup]="dateForm" (ngSubmit)="rentCar($event)">
-          Start Date: <input type="date" [min]="minDate" formControlName="startDate">
+          <strong> Start Date: </strong><input type="date" [min]="minDate" formControlName="startDate" class="mb-2">
           <br>
-          End Date: <input type="date" [min]="minDate" formControlName="endDate">
-          <button type="submit">Rent</button>
+          <strong> End Date: </strong><input type="date" [min]="minDate" formControlName="endDate" class="mb-2 ms-2">
+          <br>
+          
+            <button type="submit" class="btn btn-primary mt-3 custom-margin">Rent</button>
+          
         </form>
         
       </div>

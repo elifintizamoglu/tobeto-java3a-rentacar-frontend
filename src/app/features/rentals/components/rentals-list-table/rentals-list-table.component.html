@@ -15,7 +15,7 @@
         <tbody>
             <tr
                 *ngFor="let rental of rentals | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
-                <th scope="row">{{i + 1}}</th>
+                <th scope="row">{{ (page - 1) * itemsPerPage + i + 1}}</th>
                 <td>{{rental.brandName}} {{rental.modelName}}</td>
                 <td>{{rental.carPlate}}</td>
                 <td>{{rental.startDate}}</td>

@@ -10,7 +10,7 @@
         <tbody>
             <tr
                 *ngFor="let brand of brands | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; let i = index">
-                <th scope="row">{{i + 1}}</th>
+                <th scope="row">{{ (page - 1) * itemsPerPage + i + 1}}</th>
                 <td>{{brand.name}}</td>
                 <td>
                     <div class="d-flex justify-content-end">

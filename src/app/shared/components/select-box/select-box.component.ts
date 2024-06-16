@@ -24,6 +24,7 @@ import { ButtonComponent } from '../button/button.component';
   ],
 })
 export class SelectBoxComponent implements ControlValueAccessor {
+  @Input() defaultValue: string | undefined;
   @Input() label!: string;
   @Input() items: any[] = [];
   @Input() itemLabelKey!: string;
@@ -47,7 +48,6 @@ export class SelectBoxComponent implements ControlValueAccessor {
   }
 
   setDisabledState?(isDisabled: boolean): void {
-    // implement this method if necessary
   }
 
   handleChange(event: any) {

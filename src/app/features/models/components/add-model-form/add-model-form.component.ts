@@ -40,9 +40,18 @@ export class AddModelFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.brandsService.getAllBrands().subscribe(brands => this.brands = brands);
-    this.fuelsService.getAllFuels().subscribe(fuels => this.fuels = fuels);
-    this.transmissionService.getAllTransmissions().subscribe(transmissions => this.transmissions = transmissions);
+    this.brandsService.getAllBrands().subscribe(brands => {
+      this.brands = brands;
+      this.change.detectChanges();
+    });
+    this.fuelsService.getAllFuels().subscribe(fuels => {
+      this.fuels = fuels;
+      this.change.detectChanges();
+    });
+    this.transmissionService.getAllTransmissions().subscribe(transmissions => {
+      this.transmissions = transmissions;
+      this.change.detectChanges();
+    });
   }
 
   createForm() {
@@ -64,7 +73,6 @@ export class AddModelFormComponent implements OnInit {
   }
 
   add() {
-    //const { name, brand, fuel, transmission } = this.addForm.value;
     const request: AddModelRequestParams = {
       createModelRequest: {
         name: this.addForm.value.name,
@@ -75,7 +83,7 @@ export class AddModelFormComponent implements OnInit {
     }
 
     this.modelsService.addModel(request).subscribe({
-      next: (response) => {
+      next: () => {
         this.toastr.success('Model added successfully');
         this.addForm.reset();
         this.change.markForCheck();

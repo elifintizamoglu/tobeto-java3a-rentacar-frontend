@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CarsFilterBaseComponent } from '../cars-filter-base/cars-filter-base.component';
-import { FormGroup, FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { GetAllBrandResponse, GetModelsByBrandIdResponse, GetAllFuelResponse, GetAllTransmissionResponse, ModelsControllerService, FuelsControllerService, TransmissionsControllerService, BrandsControllerService, GetModelsByBrandIdRequestParams, GetCarsByFiltersResponse, CarsControllerService, GetCarsByFiltersRequestParams } from '../../../../shared/services/api';
+import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { GetAllBrandResponse, GetModelsByBrandIdResponse, GetAllFuelResponse, GetAllTransmissionResponse, GetCarsByFiltersResponse, GetCarsByFiltersRequestParams } from '../../../../shared/services/api';
 import { SelectBoxComponent } from '../../../../shared/components/select-box/select-box.component';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-cars-filter',
@@ -43,9 +44,16 @@ export class CarsFilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filterBase.getBrands().subscribe(brands => this.brands = brands);
-    this.filterBase.getFuels().subscribe(fuels => this.fuels = fuels);
-    this.filterBase.getTransmissions().subscribe(transmissions => this.transmissions = transmissions);
+    forkJoin({
+      brands: this.filterBase.getBrands(),
+      fuels: this.filterBase.getFuels(),
+      transmissions: this.filterBase.getTransmissions(),
+    }).subscribe(({ brands, fuels, transmissions }) => {
+      this.brands = brands;
+      this.fuels = fuels;
+      this.transmissions = transmissions;
+      this.change.detectChanges();
+    });
     this.getCars();
 
     this.filterForm.get('brand')?.valueChanges.subscribe(id => {
@@ -83,9 +91,6 @@ export class CarsFilterComponent implements OnInit {
     this.getCars();
     this.change.markForCheck();
   }
-  
-  
-  
 
   searchCars() {
     const { brand, model, fuel, transmission } = this.filterForm.value;

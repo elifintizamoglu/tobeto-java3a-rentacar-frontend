@@ -1,5 +1,12 @@
 <h6>{{ label }}</h6>
 <select class="form-select" aria-label="Default select example" [value]="value" (change)="handleChange($event)">
-  <option value="">   </option>
-  <option *ngFor="let item of items" [value]="item[itemValueKey]">{{ item[itemLabelKey] }}</option>
+  @if(defaultValue) {
+  <option [value]="defaultValue">{{defaultValue}}</option>
+  } @else {
+  <option value=""> </option>
+  }
+  @for(item of items; track item){
+  <option *ngIf="item[itemLabelKey] !== defaultValue" [value]="item[itemValueKey]"> {{ item[itemLabelKey] }}</option>
+  }
+  
 </select>

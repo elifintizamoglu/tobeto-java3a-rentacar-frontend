@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { ModelsControllerService, GetModelByIdResponse, GetAllBrandResponse, GetAllFuelResponse, GetAllTransmissionResponse, FuelsControllerService, BrandsControllerService, TransmissionsControllerService } from '../../../../shared/services/api';
@@ -19,6 +19,7 @@ import { SelectBoxComponent } from '../../../../shared/components/select-box/sel
 })
 export class EditModelFormComponent implements OnInit {
   @Input() modelId!: number;
+  @Output() defaultValue!: string;
 
   editForm!: FormGroup;
   model!: GetModelByIdResponse;
@@ -39,9 +40,18 @@ export class EditModelFormComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.getModel();
-    this.brandsService.getAllBrands().subscribe(brands => this.brands = brands);
-    this.fuelsService.getAllFuels().subscribe(fuels => this.fuels = fuels);
-    this.transmissionService.getAllTransmissions().subscribe(transmissions => this.transmissions = transmissions);
+    this.brandsService.getAllBrands().subscribe(brands => {
+      this.brands = brands;
+      this.change.detectChanges();
+    });
+    this.fuelsService.getAllFuels().subscribe(fuels => {
+      this.fuels = fuels;
+      this.change.detectChanges();
+    });
+    this.transmissionService.getAllTransmissions().subscribe(transmissions => {
+      this.transmissions = transmissions;
+      this.change.detectChanges();
+    });
   }
 
   getModel() {
@@ -49,9 +59,9 @@ export class EditModelFormComponent implements OnInit {
       this.model = model;
       this.editForm.patchValue({
         name: this.model.name,
-        brand: this.model.brandName, // Use brandId instead of brandName
-        fuel: this.model.fuelName, // Use fuelId instead of fuelName
-        transmission: this.model.transmissionName // Use transmissionId instead of transmissionName
+        brand: this.model.brandId,
+        fuel: this.model.fuelId,
+        transmission: this.model.transmissionId
       });
     });
   }
