@@ -18,6 +18,7 @@ import { CreateBrandResponse } from '../model/models';
 import { GetAllBrandResponse } from '../model/models';
 import { GetBrandByIdResponse } from '../model/models';
 import { ResourceNotFoundDetails } from '../model/models';
+import { Result } from '../model/models';
 import { UpdateBrandRequest } from '../model/models';
 import { UpdateBrandResponse } from '../model/models';
 import { UpdateUserById400Response } from '../model/models';
@@ -60,7 +61,7 @@ export interface BrandsControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, extraHttpRequestParams?: any): Observable<{}>;
+    deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, extraHttpRequestParams?: any): Observable<Result>;
 
     /**
      * 

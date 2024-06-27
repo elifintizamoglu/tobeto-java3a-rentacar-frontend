@@ -12,10 +12,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
   selector: 'app-models-list-table',
   standalone: true,
   imports: [
-    CommonModule, 
-    TableDirective, 
-    ButtonComponent, 
-    RouterModule,  
+    CommonModule,
+    TableDirective,
+    ButtonComponent,
+    RouterModule,
     NgxPaginationModule,
   ],
   templateUrl: './models-list-table.component.html',
@@ -39,24 +39,24 @@ export class ModelsListTableComponent extends ModelsListBaseComponent {
     this.deletingModelId = id;
 
     this.modelsControllerService.deleteModelById({ id: id }).subscribe({
-      complete: () => {
-        this.getModelsList();
-      },
-    });
-
-    this.modelsControllerService.deleteModelById({ id: id }).subscribe({
-      complete: () => {
-        this.toastr.success('Brand deleted succesfully.');
-        this.getModelsList();
+      next: (response: any) => {
+        if (response.success) {
+          this.toastr.success(response.message);
+        } else {
+          this.toastr.error(response.message);
+        }
         this.deletingModelId = null;
       },
       error: (error) => {
         this.deletingModelId = null;
-        if (error.error && error.error.detail) {
-          this.toastr.error(error.error.detail);
+        if (error.error && error.error.message) {
+          this.toastr.error(error.error.message);
         } else {
           this.toastr.error('An unexpected error occurred. Please try again.');
         }
+      },
+      complete: () => {
+        this.getModelsList();
       }
     });
   }

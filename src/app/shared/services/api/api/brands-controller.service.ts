@@ -29,6 +29,8 @@ import { GetBrandByIdResponse } from '../model/get-brand-by-id-response';
 // @ts-ignore
 import { ResourceNotFoundDetails } from '../model/resource-not-found-details';
 // @ts-ignore
+import { Result } from '../model/result';
+// @ts-ignore
 import { UpdateBrandRequest } from '../model/update-brand-request';
 // @ts-ignore
 import { UpdateBrandResponse } from '../model/update-brand-response';
@@ -192,10 +194,10 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Result>;
+    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Result>>;
+    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Result>>;
+    public deleteBrandById(requestParameters: DeleteBrandByIdRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         const id = requestParameters.id;
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling deleteBrandById.');
@@ -207,7 +209,8 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
         if (localVarHttpHeaderAcceptSelected === undefined) {
             // to determine the Accept header
             const httpHeaderAccepts: string[] = [
-                '*/*'
+                '*/*',
+                'application/json'
             ];
             localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         }
@@ -238,7 +241,7 @@ export class BrandsControllerService implements BrandsControllerServiceInterface
         }
 
         let localVarPath = `/api/v1/brands/delete/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: "int32"})}`;
-        return this.httpClient.request<any>('delete', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<Result>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,

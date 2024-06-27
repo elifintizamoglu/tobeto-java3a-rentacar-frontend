@@ -15,7 +15,7 @@ export interface ValidationProblemDetails {
     title?: string;
     detail?: string;
     errors?: { [key: string]: string; };
-    type?: string;
     status?: string;
+    type?: string;
 }
 

@@ -19,6 +19,7 @@ import { GetAllModelResponse } from '../model/models';
 import { GetModelByIdResponse } from '../model/models';
 import { GetModelsByBrandIdResponse } from '../model/models';
 import { ResourceNotFoundDetails } from '../model/models';
+import { Result } from '../model/models';
 import { UpdateModelRequest } from '../model/models';
 import { UpdateModelResponse } from '../model/models';
 import { UpdateUserById400Response } from '../model/models';
@@ -65,7 +66,7 @@ export interface ModelsControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    deleteModelById(requestParameters: DeleteModelByIdRequestParams, extraHttpRequestParams?: any): Observable<{}>;
+    deleteModelById(requestParameters: DeleteModelByIdRequestParams, extraHttpRequestParams?: any): Observable<Result>;
 
     /**
      * 

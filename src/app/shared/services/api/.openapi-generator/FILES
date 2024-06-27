@@ -59,6 +59,7 @@ model/get-user-by-id-response.ts
 model/models.ts
 model/registration-request.ts
 model/resource-not-found-details.ts
+model/result.ts
 model/update-brand-request.ts
 model/update-brand-response.ts
 model/update-car-request.ts

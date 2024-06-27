@@ -34,6 +34,7 @@ export * from './get-user-by-email-response';
 export * from './get-user-by-id-response';
 export * from './registration-request';
 export * from './resource-not-found-details';
+export * from './result';
 export * from './update-brand-request';
 export * from './update-brand-response';
 export * from './update-car-request';

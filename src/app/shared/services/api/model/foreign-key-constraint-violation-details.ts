@@ -11,10 +11,10 @@
  */
 
 
-export interface BusinessProblemDetails { 
+export interface ForeignKeyConstraintViolationDetails { 
     title?: string;
     detail?: string;
-    status?: string;
     type?: string;
+    status?: string;
 }
 

@@ -11,10 +11,8 @@
  */
 
 
-export interface BusinessProblemDetails { 
-    title?: string;
-    detail?: string;
-    status?: string;
-    type?: string;
+export interface Result { 
+    success?: boolean;
+    message?: string;
 }
 

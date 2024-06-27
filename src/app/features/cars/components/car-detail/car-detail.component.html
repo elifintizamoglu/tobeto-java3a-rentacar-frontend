@@ -1,7 +1,8 @@
 <app-home-layout>
   <div class="car-container" *ngIf="car">
     <div class="car-box">
-      <img [src]="'https://cdn.cetas.com.tr/Delivery/Public/Image/-1x-1/HANGI_ARABA_HANGI_ULKE_02_sp5zy3n1im.jpg'" alt="Car Image" class="car-image">
+      <img [src]="'https://cdn.cetas.com.tr/Delivery/Public/Image/-1x-1/HANGI_ARABA_HANGI_ULKE_02_sp5zy3n1im.jpg'"
+        alt="Car Image" class="car-image">
       <div class="car-details">
         <h3>{{ car.brandName }} {{ car.modelName }}</h3>
         <p><strong>Year:</strong> {{ car.modelYear }}</p>
@@ -13,11 +14,13 @@
           <br>
           <strong> End Date: </strong><input type="date" [min]="minDate" formControlName="endDate" class="mb-2 ms-2">
           <br>
-          
-            <button type="submit" class="btn btn-primary mt-3 custom-margin">Rent</button>
-          
+          <button type="button" class="btn btn-secondary mt-3" [routerLink]="['/cars']">
+            <i class="fas fa-arrow-left"></i> Back To Cars
+          </button>
+          <button type="submit" class="btn btn-primary mt-3 custom-margin">Rent</button>
+
         </form>
-        
+
       </div>
     </div>
   </div>

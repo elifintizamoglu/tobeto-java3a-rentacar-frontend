@@ -40,18 +40,24 @@ export class BrandsListTableComponent extends BrandsListBaseComponent {
     this.deletingBrandId = id;
 
     this.brandsService.deleteBrandById({ id: id }).subscribe({
-      complete: () => {
-        this.toastr.success('Brand deleted succesfully.');
-        this.getBrandsList();
+      next: (response: any) => {
+        if(response.success){
+          this.toastr.success(response.message);
+        } else {
+          this.toastr.error(response.message);
+        }
         this.deletingBrandId = null;
       },
       error: (error) => {
         this.deletingBrandId = null;
-        if (error.error && error.error.detail) {
-          this.toastr.error(error.error.detail);
+        if (error.error && error.error.message) {
+          this.toastr.error(error.error.message);
         } else {
           this.toastr.error('An unexpected error occurred. Please try again.');
         }
+      },
+      complete: () => {
+        this.getBrandsList();
       }
     });
   }

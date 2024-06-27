@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HomeLayoutComponent } from '../../../../shared/layouts/home-layout/home-layout.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AddRentalRequestParams, CarsControllerService, CreateRentalRequest, GetCarByIdResponse, GetUserByEmailResponse, RentalsControllerService, UsersControllerService } from '../../../../shared/services/api';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokenService } from '../../../token/token.service';
@@ -18,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
     FormsModule,
     ButtonComponent,
     ReactiveFormsModule,
+    RouterModule,
   ],
   templateUrl: './car-detail.component.html',
   styleUrl: './car-detail.component.scss',
