@@ -14,11 +14,11 @@
           <br>
           <strong> End Date: </strong><input type="date" [min]="minDate" formControlName="endDate" class="mb-2 ms-2">
           <br>
-          <button type="button" class="btn btn-secondary mt-3" [routerLink]="['/cars']">
+          <button type="button" class="btn btn-secondary" [routerLink]="['/cars']">
             <i class="fas fa-arrow-left"></i> Back To Cars
           </button>
-          <button type="submit" class="btn btn-primary mt-3 custom-margin">Rent</button>
-
+          <button type="submit" class="btn btn-primary custom-margin">Rent</button>
+           <!-- <app-button (click)="onRentClick()" class=" custom-margin">Rent</app-button> -->
         </form>
 
       </div>

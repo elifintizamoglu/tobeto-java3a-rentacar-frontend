@@ -14,7 +14,7 @@
 export interface ResourceNotFoundDetails { 
     title?: string;
     detail?: string;
-    status?: string;
     type?: string;
+    status?: string;
 }
 

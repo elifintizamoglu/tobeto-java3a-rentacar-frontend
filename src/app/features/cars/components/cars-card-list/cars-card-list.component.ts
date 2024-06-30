@@ -33,7 +33,7 @@ export class CarsCardListComponent {
     return car.id;
   }
 
-  onRentButtonClick(carId: number) {
+  onSeeDetailsButtonClick(carId: number) {
     this.router.navigate(['/car/detail', carId]);
   }
 }

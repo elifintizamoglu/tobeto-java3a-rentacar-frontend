@@ -1,0 +1,88 @@
+:host {
+  display: block;
+}
+
+
+.car-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.car-box {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 800px; /* Kutu genişliği */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.car-details {
+  flex: 1;
+  padding: 20px;
+}
+
+.car-image {
+  width: 200px; /* Resim genişliği */
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.payment-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Responsive düzenleme */
+@media (max-width: 768px) {
+  .car-box {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .car-image {
+    width: 100%;
+  }
+
+  .payment-container {
+    order: -1; /* Formu üste taşı */
+  }
+}
+// .car-container {
+//   margin: 5% 0;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .car-box {
+//   width: 68%;
+//   height: 80%;
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 20px;
+//   border: 2px solid #c0baba;
+//   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+//   box-sizing: border-box;
+// }
+
+// .car-image {
+//   width: 40%;
+//   height: 40%;
+//   object-fit: cover;
+// }
+
+// .car-details {
+//   //width: 40%;
+//   margin-left: 8%;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+// }

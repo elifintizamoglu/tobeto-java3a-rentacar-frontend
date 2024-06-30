@@ -21,13 +21,13 @@ import { Observable }                                        from 'rxjs';
 // @ts-ignore
 import { CreateRentalRequest } from '../model/create-rental-request';
 // @ts-ignore
-import { CreateRentalResponse } from '../model/create-rental-response';
-// @ts-ignore
 import { GetAllRentalResponse } from '../model/get-all-rental-response';
 // @ts-ignore
 import { GetRentalByIdResponse } from '../model/get-rental-by-id-response';
 // @ts-ignore
 import { ResourceNotFoundDetails } from '../model/resource-not-found-details';
+// @ts-ignore
+import { Result } from '../model/result';
 // @ts-ignore
 import { UpdateRentalRequest } from '../model/update-rental-request';
 // @ts-ignore
@@ -41,6 +41,7 @@ import { Configuration }                                     from '../configurat
 import {
     RentalsControllerServiceInterface,
     AddRentalRequestParams,
+    CheckAvailabilityRequestParams,
     DeleteRentalByIdRequestParams,
     GetRentalByIdRequestParams,
     UpdateRentalByIdRequestParams
@@ -117,9 +118,9 @@ export class RentalsControllerService implements RentalsControllerServiceInterfa
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addRental(requestParameters: AddRentalRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CreateRentalResponse>;
-    public addRental(requestParameters: AddRentalRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CreateRentalResponse>>;
-    public addRental(requestParameters: AddRentalRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CreateRentalResponse>>;
+    public addRental(requestParameters: AddRentalRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Result>;
+    public addRental(requestParameters: AddRentalRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Result>>;
+    public addRental(requestParameters: AddRentalRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Result>>;
     public addRental(requestParameters: AddRentalRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         const createRentalRequest = requestParameters.createRentalRequest;
         if (createRentalRequest === null || createRentalRequest === undefined) {
@@ -173,7 +174,82 @@ export class RentalsControllerService implements RentalsControllerServiceInterfa
         }
 
         let localVarPath = `/api/v1/rentals`;
-        return this.httpClient.request<CreateRentalResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<Result>('post', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                body: createRentalRequest,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                transferCache: localVarTransferCache,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * @param requestParameters
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public checkAvailability(requestParameters: CheckAvailabilityRequestParams, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<Result>;
+    public checkAvailability(requestParameters: CheckAvailabilityRequestParams, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Result>>;
+    public checkAvailability(requestParameters: CheckAvailabilityRequestParams, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Result>>;
+    public checkAvailability(requestParameters: CheckAvailabilityRequestParams, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        const createRentalRequest = requestParameters.createRentalRequest;
+        if (createRentalRequest === null || createRentalRequest === undefined) {
+            throw new Error('Required parameter createRentalRequest was null or undefined when calling checkAvailability.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                '*/*',
+                'application/json'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+        let localVarTransferCache: boolean | undefined = options && options.transferCache;
+        if (localVarTransferCache === undefined) {
+            localVarTransferCache = true;
+        }
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/api/v1/rentals/checkAvailability`;
+        return this.httpClient.request<Result>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: createRentalRequest,

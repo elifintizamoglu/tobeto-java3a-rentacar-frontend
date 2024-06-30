@@ -11,11 +11,12 @@
  */
 
 
-export interface ValidationProblemDetails { 
-    title?: string;
-    detail?: string;
-    errors?: { [key: string]: string; };
-    type?: string;
-    status?: string;
+export interface CreateCardRequest { 
+    userId: number;
+    cardNumber: string;
+    expirationMonth: string;
+    expirationYear: string;
+    cvv: string;
+    cardHolderFullName: string;
 }
 

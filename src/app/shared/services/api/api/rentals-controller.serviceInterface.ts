@@ -14,10 +14,10 @@ import { HttpHeaders }                                       from '@angular/comm
 import { Observable }                                        from 'rxjs';
 
 import { CreateRentalRequest } from '../model/models';
-import { CreateRentalResponse } from '../model/models';
 import { GetAllRentalResponse } from '../model/models';
 import { GetRentalByIdResponse } from '../model/models';
 import { ResourceNotFoundDetails } from '../model/models';
+import { Result } from '../model/models';
 import { UpdateRentalRequest } from '../model/models';
 import { UpdateRentalResponse } from '../model/models';
 import { UpdateUserById400Response } from '../model/models';
@@ -27,6 +27,10 @@ import { Configuration }                                     from '../configurat
 
 
 export interface AddRentalRequestParams {
+    createRentalRequest: CreateRentalRequest;
+}
+
+export interface CheckAvailabilityRequestParams {
     createRentalRequest: CreateRentalRequest;
 }
 
@@ -53,7 +57,14 @@ export interface RentalsControllerServiceInterface {
      * 
 * @param requestParameters
      */
-    addRental(requestParameters: AddRentalRequestParams, extraHttpRequestParams?: any): Observable<CreateRentalResponse>;
+    addRental(requestParameters: AddRentalRequestParams, extraHttpRequestParams?: any): Observable<Result>;
+
+    /**
+     * 
+     * 
+* @param requestParameters
+     */
+    checkAvailability(requestParameters: CheckAvailabilityRequestParams, extraHttpRequestParams?: any): Observable<Result>;
 
     /**
      * 

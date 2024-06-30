@@ -9,13 +9,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { CreateRentalRequest } from './create-rental-request';
+import { CreateCardRequest } from './create-card-request';
 
 
-export interface ValidationProblemDetails { 
-    title?: string;
-    detail?: string;
-    errors?: { [key: string]: string; };
-    type?: string;
-    status?: string;
+export interface CreatePayAndRentRequest { 
+    rentalRequest: CreateRentalRequest;
+    cardRequest: CreateCardRequest;
 }
 
