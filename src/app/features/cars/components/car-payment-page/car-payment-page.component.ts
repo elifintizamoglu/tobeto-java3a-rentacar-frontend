@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { HomeLayoutComponent } from '../../../../shared/layouts/home-layout/home-layout.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CreateCardRequest, CreateRentalRequest, CreatePayAndRentRequest, GetCarByIdResponse, GetUserByEmailResponse, PaymentsControllerService, UsersControllerService, PayAndRentRequestParams } from '../../../../shared/services/api';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TokenService } from '../../../token/token.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -14,12 +13,13 @@ import { ToastrService } from 'ngx-toastr';
     CommonModule,
     HomeLayoutComponent,
     ReactiveFormsModule,
+    RouterModule,
   ],
   templateUrl: './car-payment-page.component.html',
   styleUrls: ['./car-payment-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CarPaymentPageComponent implements OnInit {
+export class CarPaymentPageComponent {
   car: GetCarByIdResponse;
   startDate: string;
   endDate: string;
@@ -30,8 +30,6 @@ export class CarPaymentPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private tokenService: TokenService,
-    private userService: UsersControllerService,
     private paymentService: PaymentsControllerService,
     private toastr: ToastrService,
     private router: Router
@@ -51,15 +49,8 @@ export class CarPaymentPageComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
-
-
   submitPayment(event: Event) {
     event.preventDefault();
-  console.log("a");
-    
-    console.log("b");
 
     const rentalRequest: CreateRentalRequest = {
       carId: this.car.id,
@@ -67,7 +58,6 @@ export class CarPaymentPageComponent implements OnInit {
       startDate: this.startDate,
       endDate: this.endDate,
     };
-    console.log("c");
 
     console.log(this.userId);
     const cardRequest: CreateCardRequest = {
@@ -78,24 +68,19 @@ export class CarPaymentPageComponent implements OnInit {
       cvv: this.cardForm.value.cvv,
       cardHolderFullName: this.cardForm.value.cardHolderFullName,
     };
-    console.log("d");
 
     const payAndRentRequest: CreatePayAndRentRequest = {
       rentalRequest: rentalRequest,
       cardRequest: cardRequest
     };
-    console.log("e");
 
     const requestParams: PayAndRentRequestParams = {
       createPayAndRentRequest: payAndRentRequest
     };
-    console.log("f");
 
     this.paymentService.payAndRent(requestParams).subscribe({
-      
-      next: (response) => {
-        console.log("g");
 
+      next: (response) => {
         if (response.success) {
           this.toastr.success(response.message);
           setTimeout(() => {

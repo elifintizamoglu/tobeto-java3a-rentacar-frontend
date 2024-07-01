@@ -2,7 +2,7 @@
   <div class="car-container">
     <div class="car-box">
       <div class="car-details">
-        <img [src]="'https://cdn.cetas.com.tr/Delivery/Public/Image/-1x-1/HANGI_ARABA_HANGI_ULKE_02_sp5zy3n1im.jpg'" alt="Car Image" class="car-image">
+        <img [src]="car.imagePath" alt="Car Image" class="car-image">
         <h3>{{ car.brandName }} {{ car.modelName }}</h3>
         <p><strong>Year:</strong> {{ car.modelYear }}</p>
         <p><strong>Daily Price:</strong> {{ car.dailyPrice }} TL</p>
@@ -14,26 +14,33 @@
       <div class="payment-container">
         <form [formGroup]="cardForm" (ngSubmit)="submitPayment($event)">
           <div class="form-group">
-            <label for="cardNumber">Card Number</label>
-            <input type="text" class="form-control" id="cardNumber" formControlName="cardNumber" placeholder="Enter card number">
+            <label for="cardNumber"><strong>Card Number</strong></label>
+            <input type="text" class="form-control" id="cardNumber" formControlName="cardNumber"
+              placeholder="Enter card number">
           </div>
           <div class="form-group">
-            <label for="expirationMonth">Expiration Month</label>
-            <input type="text" class="form-control" id="expirationMonth" formControlName="expirationMonth" placeholder="MM">
+            <label for="expirationMonth"><strong>Expiration Month</strong></label>
+            <input type="text" class="form-control" id="expirationMonth" formControlName="expirationMonth"
+              placeholder="MM">
           </div>
           <div class="form-group">
-            <label for="expirationYear">Expiration Year</label>
-            <input type="text" class="form-control" id="expirationYear" formControlName="expirationYear" placeholder="YYYY">
+            <label for="expirationYear"><strong>Year</strong></label>
+            <input type="text" class="form-control" id="expirationYear" formControlName="expirationYear"
+              placeholder="YYYY">
           </div>
           <div class="form-group">
-            <label for="cvv">CVV</label>
+            <label for="cvv"><strong>CVV</strong></label>
             <input type="text" class="form-control" id="cvv" formControlName="cvv" placeholder="CVV">
           </div>
           <div class="form-group">
-            <label for="cardHolderFullName">Card Holder's Name</label>
-            <input type="text" class="form-control" id="cardHolderFullName" formControlName="cardHolderFullName" placeholder="Enter card holder's full name">
+            <label for="cardHolderFullName"><strong>Car Holder's Name</strong></label>
+            <input type="text" class="form-control" id="cardHolderFullName" formControlName="cardHolderFullName"
+              placeholder="Enter card holder's full name">
           </div>
-          <button type="submit" class="btn btn-primary">Pay And Rent</button>
+          <button type="button" class="btn btn-secondary me-1" [routerLink]="['/car/detail/',car.id]">
+            <i class="fas fa-arrow-left"></i> Back To Detail Page
+          </button>
+          <button type="submit" class="btn btn-primary ms-5">Pay And Rent</button>
         </form>
       </div>
     </div>

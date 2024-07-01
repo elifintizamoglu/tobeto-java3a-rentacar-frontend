@@ -1,11 +1,12 @@
 <div class="card" style="margin-bottom: 5px;">
-    <!-- <img *ngIf="imageSrc" [src]="imageSrc" class="card-img-top" [alt]="imageAlt"> -->
     @if(imageSrc){
-        <img [src]="imageSrc" class="card-img-top" [alt]="imageAlt">
+    <img [src]="imageSrc" class="card-img-top card-image" alt="Car Image">
     }
     <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
         <p class="card-text">{{text}}</p>
-        <button type="button" class="btn btn-primary" (click)="buttonClick.emit()">{{buttonLabel}}</button>
+        <div class="button-container">
+            <button class="btn btn-primary" (click)="buttonClick.emit()"> {{ buttonLabel }}</button>
+        </div>
     </div>
 </div>

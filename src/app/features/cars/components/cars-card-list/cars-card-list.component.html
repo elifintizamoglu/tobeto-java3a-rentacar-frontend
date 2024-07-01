@@ -2,14 +2,11 @@
 
 <div *ngIf="cars.length > 0; else noCarsFound">
   <div class="row">
-    <div class="col-6 mb-3" *ngFor="let car of cars | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; trackBy: trackByCarId">
-      <app-card
-        [title]="car.brandName + ' ' + car.modelName"
-        [text]=" 'Daily Price: ' + car.dailyPrice + ' TL'"
-        [imageSrc]="'https://cdn.cetas.com.tr/Delivery/Public/Image/-1x-1/HANGI_ARABA_HANGI_ULKE_02_sp5zy3n1im.jpg'"
-        buttonLabel="See Details"
-        (buttonClick)="onSeeDetailsButtonClick(car.id!)"
-      ></app-card>
+    <div class="col-6 mb-3"
+      *ngFor="let car of cars | paginate: { itemsPerPage: itemsPerPage, currentPage: page }; trackBy: trackByCarId">
+      <app-card [title]="car.brandName + ' ' + car.modelName" [text]=" 'Daily Price: ' + car.dailyPrice + ' TL'"
+        [imageSrc]="car.imagePath" buttonLabel="See Details"
+        (buttonClick)="onSeeDetailsButtonClick(car.id!)"></app-card>
     </div>
   </div>
 

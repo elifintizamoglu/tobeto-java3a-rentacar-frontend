@@ -2,11 +2,10 @@
   display: block;
 }
 
-
 .car-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .car-box {
@@ -14,7 +13,7 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
-  width: 800px; /* Kutu genişliği */
+  width: 800px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
@@ -24,7 +23,7 @@
 }
 
 .car-image {
-  width: 200px; /* Resim genişliği */
+  width: 200px;
   height: auto;
   border-radius: 4px;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
@@ -40,7 +39,6 @@
   margin-bottom: 20px;
 }
 
-/* Responsive düzenleme */
 @media (max-width: 768px) {
   .car-box {
     flex-direction: column;
@@ -52,37 +50,6 @@
   }
 
   .payment-container {
-    order: -1; /* Formu üste taşı */
+    order: -1;
   }
 }
-// .car-container {
-//   margin: 5% 0;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-// .car-box {
-//   width: 68%;
-//   height: 80%;
-//   display: flex;
-//   justify-content: space-between;
-//   padding: 20px;
-//   border: 2px solid #c0baba;
-//   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-//   box-sizing: border-box;
-// }
-
-// .car-image {
-//   width: 40%;
-//   height: 40%;
-//   object-fit: cover;
-// }
-
-// .car-details {
-//   //width: 40%;
-//   margin-left: 8%;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-// }

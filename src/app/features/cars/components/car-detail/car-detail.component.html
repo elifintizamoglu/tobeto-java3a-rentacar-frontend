@@ -1,8 +1,7 @@
 <app-home-layout>
   <div class="car-container" *ngIf="car">
     <div class="car-box">
-      <img [src]="'https://cdn.cetas.com.tr/Delivery/Public/Image/-1x-1/HANGI_ARABA_HANGI_ULKE_02_sp5zy3n1im.jpg'"
-        alt="Car Image" class="car-image">
+      <img [src]="car.imagePath" alt="Car Image" class="car-image">
       <div class="car-details">
         <h3>{{ car.brandName }} {{ car.modelName }}</h3>
         <p><strong>Year:</strong> {{ car.modelYear }}</p>
@@ -18,7 +17,6 @@
             <i class="fas fa-arrow-left"></i> Back To Cars
           </button>
           <button type="submit" class="btn btn-primary custom-margin">Rent</button>
-           <!-- <app-button (click)="onRentClick()" class=" custom-margin">Rent</app-button> -->
         </form>
 
       </div>
