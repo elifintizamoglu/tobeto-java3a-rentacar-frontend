@@ -1,27 +1,65 @@
-# JavaFS3ARentACar
 
+# Rent A Car - Frontend
+
+It is a full-stack web application that aims to allow user 
+- Register / login,
+- List and filter cars,
+- Rent a car,
+- Pay for rental.
+
+I developed this project using;
+
+****Angular**** for the frontend 
+
+****Spring Boot**** and ****PostgreSQL**** for the backend .
+
+**Backend codes and images are [here.](https://github.com/elifintizamoglu/tobeto-java3a-rentacar-backend)**
+
+## Properties In Frontend
+
+- Login, sign up pages, 
+- Listing all cars,
+- Filtering cars by brand, model, fuel or transmission.
+- Car detail page,
+- Payment page,
+- Authorization and admin page.
+
+## About Angular
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
-
-## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Project Images
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Main page
 
-## Build
+![Main Page](https://github.com/elifintizamoglu/tobeto-java3a-rentacar-frontend/blob/master/src/assets/webpage-images/MainPage.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### List and Filter Cars Page
 
-## Running unit tests
+![List and Filter Cars](https://github.com/elifintizamoglu/tobeto-java3a-rentacar-frontend/blob/master/src/assets/webpage-images/ListCars.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Filtering Example
 
-## Running end-to-end tests
+![Filtering Example](https://github.com/elifintizamoglu/tobeto-java3a-rentacar-frontend/blob/master/src/assets/webpage-images/FilterCarsExample.png)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Detail Page
 
-## Further help
+![Detail Page](https://github.com/elifintizamoglu/tobeto-java3a-rentacar-frontend/blob/master/src/assets/webpage-images/CarDetail.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Payment Page
+
+![Payment Page](https://github.com/elifintizamoglu/tobeto-java3a-rentacar-frontend/blob/master/src/assets/webpage-images/PaymntPage.png)
+
+### Admin Panel - Rentals Management
+
+![Admin Panel - Rentals Management](https://github.com/elifintizamoglu/tobeto-java3a-rentacar-frontend/blob/master/src/assets/webpage-images/AdminPage.png)
+
+### Login Page
+
+![Login Page](https://github.com/elifintizamoglu/tobeto-java3a-rentacar-frontend/blob/master/src/assets/webpage-images/Login.png)
+
+
+### Sign Up Page
+
+![Sign Up Page](https://github.com/elifintizamoglu/tobeto-java3a-rentacar-frontend/blob/master/src/assets/webpage-images/SignUp.png)
